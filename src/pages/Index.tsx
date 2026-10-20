@@ -209,8 +209,24 @@ export default function Index() {
     { name: "Multispecialty Clinics", bg: "bg-emerald text-cream" },
   ];
 
+  interface PortfolioProject {
+    title: string;
+    specialty: string;
+    category: string;
+    objective: string;
+    services: string;
+    bg: string;
+    aspect: string;
+    badge: string;
+    image?: string;
+    isCards?: boolean;
+    isLogoPreview?: boolean;
+    isWebPreview?: boolean;
+    isWebPreview2?: boolean;
+  }
+
   // Portfolio items
-  const portfolioProjects = [
+  const portfolioProjects: PortfolioProject[] = [
     {
       title: "Skin Myths Reel Series",
       specialty: "Dermatology",
@@ -235,14 +251,14 @@ export default function Index() {
     },
     {
       title: "Portfolio Website Concept",
-      specialty: "Dermatology",
+      specialty: "Doctor Websites",
       category: "Doctor Websites",
       objective: "One clear home for credentials & inquiries",
       services: "Design · Build · SEO basics",
-      bg: "bg-skylight",
-      aspect: "aspect-[4/3]",
+      bg: "bg-[#072421]",
+      aspect: "aspect-[1024/491]",
       badge: "Concept demo",
-      isWebPreview: true,
+      image: "/dr-gaurav-site.png",
     },
     {
       title: "Instagram Profile Makeover",
@@ -309,7 +325,6 @@ export default function Index() {
     return p.category === workFilter;
   });
 
-  // Content magazine items
   const galleryItems = [
     {
       title: "Meet your dermatologist",
@@ -1664,18 +1679,45 @@ export default function Index() {
                 >
                   <article
                     onClick={() => setSelectedProject(project)}
-                    className={`group relative overflow-hidden rounded-[1.8rem] border-2 border-navy hard-shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:hard-shadow cursor-pointer ${project.bg} ${project.aspect}`}
+                    className={`group relative overflow-hidden rounded-[1.8rem] border-2 border-navy hard-shadow-sm transition-all duration-300 hover:scale-[1.02] hover:hard-shadow cursor-pointer ${project.bg} ${project.aspect}`}
                   >
                     {/* Image / Graphic Preview */}
                     <div className="pointer-events-none h-full">
-                      {project.image ? (
-                        <img
-                          src={project.image}
-                          alt={project.title}
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
+                      {project.isWebPreview ? (
+                        <div className="flex h-full flex-col p-4 transition-transform duration-500 ease-out group-hover:scale-105">
+                          <div className="rounded-t-lg border-2 border-navy bg-card px-2 py-1 text-[10px] text-navy font-mono">
+                            ● ● ● concept.site
+                          </div>
+                          <div className="flex-1 rounded-b-lg border-2 border-t-0 border-navy bg-card p-3">
+                            <p className="text-lg font-extrabold leading-tight text-navy">
+                              {project.title}
+                            </p>
+                            <img
+                              src={project.image || "/dr-gaurav-site.png"}
+                              alt={project.title}
+                              className="mt-2 h-20 w-full rounded object-cover object-top border border-navy/15"
+                            />
+                            <span className="mt-2 inline-block rounded-full bg-coral px-2 py-0.5 text-[10px] font-bold text-navy">
+                              Book a consult
+                            </span>
+                          </div>
+                        </div>
+                      ) : project.isWebPreview2 ? (
+                        <div className="flex h-full flex-col p-4 transition-transform duration-500 ease-out group-hover:scale-105">
+                          <div className="rounded-t-lg border-2 border-navy bg-card px-2 py-1 text-[10px] text-navy font-mono">
+                            ● ● ● concept.site
+                          </div>
+                          <div className="flex-1 rounded-b-lg border-2 border-t-0 border-navy bg-card p-3">
+                            <p className="text-lg font-extrabold leading-tight text-navy">
+                              {project.title}
+                            </p>
+                            <span className="mt-2 inline-block rounded-full bg-coral px-2 py-0.5 text-[10px] font-bold text-navy">
+                              Book a consult
+                            </span>
+                          </div>
+                        </div>
                       ) : project.isCards ? (
-                        <div className="relative grid h-full place-items-center p-6">
+                        <div className="relative grid h-full place-items-center p-6 transition-transform duration-500 ease-out group-hover:scale-105">
                           <div
                             className="absolute h-[70%] w-[65%] rounded-2xl border-2 border-navy bg-card p-4 transition-transform duration-500 group-hover:rotate-0"
                             style={{ transform: "rotate(8deg) translate(20px, -12px)" }}
@@ -1694,52 +1736,25 @@ export default function Index() {
                             </p>
                           </div>
                         </div>
-                      ) : project.isWebPreview ? (
-                        <div className="flex h-full flex-col p-4">
-                          <div className="rounded-t-lg border-2 border-navy bg-card px-2 py-1 text-[10px] text-navy font-mono">
-                            ● ● ● concept.site
-                          </div>
-                          <div className="flex-1 rounded-b-lg border-2 border-t-0 border-navy bg-card p-3 transition-transform duration-700 group-hover:scale-105">
-                            <p className="text-lg font-extrabold leading-tight text-navy">
-                              {project.title}
-                            </p>
-                            <img
-                              src={doc1Img}
-                              alt=""
-                              className="mt-2 h-20 w-full rounded object-cover"
-                            />
-                            <span className="mt-2 inline-block rounded-full bg-coral px-2 py-0.5 text-[10px] font-bold text-navy">
-                              Book a consult
-                            </span>
-                          </div>
-                        </div>
-                      ) : project.isWebPreview2 ? (
-                        <div className="flex h-full flex-col p-4">
-                          <div className="rounded-t-lg border-2 border-navy bg-card px-2 py-1 text-[10px] text-navy font-mono">
-                            ● ● ● concept.site
-                          </div>
-                          <div className="flex-1 rounded-b-lg border-2 border-t-0 border-navy bg-card p-3 transition-transform duration-700 group-hover:scale-105">
-                            <p className="text-lg font-extrabold leading-tight text-navy">
-                              {project.title}
-                            </p>
-                            <span className="mt-2 inline-block rounded-full bg-coral px-2 py-0.5 text-[10px] font-bold text-navy">
-                              Book a consult
-                            </span>
-                          </div>
-                        </div>
                       ) : project.isLogoPreview ? (
-                        <div className="grid h-full place-items-center p-6 text-cream">
+                        <div className="grid h-full place-items-center p-6 text-cream transition-transform duration-500 ease-out group-hover:scale-105">
                           <p className="text-center text-4xl font-black leading-none transition-transform duration-700 group-hover:scale-110">
                             Aa
                             <br />
                             <span className="text-sunny">✚</span> Care
                           </p>
                         </div>
+                      ) : project.image ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className={`h-full w-full ${project.aspect?.includes('1024') ? 'object-contain' : 'object-cover group-hover:scale-110'} transition-transform duration-700 ease-out`}
+                        />
                       ) : null}
                     </div>
 
                     {/* Sliding Bottom Drawer on Hover */}
-                    <div className="pointer-events-none absolute inset-x-3 bottom-3 translate-y-[calc(100%+1rem)] rounded-2xl border-2 border-navy bg-card p-4 transition-transform duration-500 group-hover:translate-y-0 text-navy">
+                    <div className="pointer-events-none absolute inset-x-3 bottom-3 translate-y-[calc(100%+1rem)] rounded-2xl border-2 border-navy bg-card p-4 transition-transform duration-500 ease-out group-hover:delay-150 group-hover:translate-y-0 text-navy">
                       <p className="text-[11px] font-bold uppercase tracking-wider text-ocean">
                         {project.specialty} · {project.category}
                       </p>
@@ -3184,7 +3199,7 @@ export default function Index() {
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
-                className="mt-4 h-52 w-full rounded-2xl object-cover border-2 border-navy"
+                className="mt-4 h-52 w-full rounded-2xl object-cover object-top border-2 border-navy"
               />
             )}
 
