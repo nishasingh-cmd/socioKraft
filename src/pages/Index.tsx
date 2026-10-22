@@ -490,7 +490,7 @@ export default function Index() {
         {/* ============================================================== */}
         <section
           id="top"
-          className="relative overflow-hidden bg-skylight min-h-screen flex flex-col justify-center pt-[90px] pb-12 md:pt-[100px] md:pb-16"
+          className="relative overflow-hidden bg-skylight min-h-screen flex flex-col justify-center pt-[84px] pb-12 sm:pt-[96px] sm:pb-16 lg:pt-[100px] lg:pb-16"
         >
           {/* Ambient blur glow */}
           <div
@@ -509,77 +509,77 @@ export default function Index() {
             {/* Left Column Content */}
             <div className="max-w-2xl">
               {/* Badge pills */}
-              <div className="mb-4 flex flex-wrap gap-2">
-                <span className="rounded-full bg-navy px-4 py-1 text-[13.5px] font-bold uppercase tracking-widest text-cream">
+              <div className="mb-3.5 sm:mb-4 flex flex-wrap gap-2">
+                <span className="rounded-full bg-navy px-3.5 py-1 text-xs sm:text-[13.5px] font-bold uppercase tracking-widest text-cream">
                   Personal branding for doctors
                 </span>
-                <span className="rounded-full border-2 border-navy bg-white px-3.5 py-1 text-[13.5px] font-bold text-navy">
+                <span className="rounded-full border-2 border-navy bg-white px-3 py-1 text-xs sm:text-[13.5px] font-bold text-navy">
                   Reels · Social · Websites
                 </span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-[2.875rem] font-black leading-[0.96] tracking-tight sm:text-[50px] lg:text-[82px] text-navy">
-                <span className="mr-3 inline-block">Great</span>
-                <span className="mr-3 inline-block">Doctors</span>
+              <h1 className="text-[2.25rem] leading-[1.02] sm:text-[50px] lg:text-[82px] font-black sm:leading-[0.96] tracking-tight text-navy">
+                <span className="mr-2 sm:mr-3 inline-block">Great</span>
+                <span className="mr-2 sm:mr-3 inline-block">Doctors</span>
                 <br />
                 <span className="inline-block">
                   Deserve <span className="text-outline">to</span>
                 </span>{" "}
                 <span className="inline-block">
-                  <span className="relative inline-block rounded-2xl border-2 border-navy bg-coral px-4 py-0.5 -rotate-1 text-navy hard-shadow-sm">
+                  <span className="relative inline-block rounded-xl sm:rounded-2xl border-2 border-navy bg-coral px-3 py-0.5 sm:px-4 sm:py-0.5 -rotate-1 text-navy hard-shadow-sm">
                     Be Seen.
                   </span>
                 </span>
               </h1>
 
               {/* Ocean Blue Subheadline */}
-              <p className="mt-4 text-[22px] font-bold text-ocean md:text-[26px]">
+              <p className="mt-3 sm:mt-4 text-lg sm:text-[22px] md:text-[26px] font-bold text-ocean">
                 Your expertise changes lives. We help the digital world see it.
               </p>
 
               {/* Lead Paragraph */}
-              <p className="mt-3 text-[15.5px] leading-relaxed text-muted-foreground md:text-[18px]">
+              <p className="mt-2.5 sm:mt-3 text-sm sm:text-[15.5px] leading-relaxed text-muted-foreground md:text-[18px]">
                 Sociokraft builds powerful personal brands for doctors through strategic content,
                 premium video production, social media management, and professional digital
                 experiences that turn expertise into trust.
               </p>
 
               {/* Action Buttons */}
-              <div className="mt-6 flex flex-wrap items-center gap-3.5">
+              <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-3.5">
                 <button
                   type="button"
                   onClick={() => setAuditModalOpen(true)}
-                  className="btn-pill-coral px-6 py-3.5 text-[17.5px] font-bold"
+                  className="btn-pill-coral px-5 py-3 sm:px-6 sm:py-3.5 text-base sm:text-[17.5px] font-bold text-center"
                 >
                   Claim Your Free Digital Audit
                 </button>
                 <a
                   href="#work"
-                  className="btn-pill-card px-6 py-3.5 text-[17.5px] font-bold"
+                  className="btn-pill-card px-5 py-3 sm:px-6 sm:py-3.5 text-base sm:text-[17.5px] font-bold text-center"
                 >
                   Explore Our Work
                 </a>
               </div>
 
-              <p className="mt-2.5 text-[13.5px] text-muted-foreground">
+              <p className="mt-2 text-xs sm:text-[13.5px] text-muted-foreground">
                 No obligation. Just a conversation about your digital growth.
               </p>
 
               <a
                 href="#transformation"
-                className="mt-3 inline-flex items-center gap-2 text-[15.5px] font-bold text-navy underline decoration-coral decoration-2 underline-offset-4 hover:text-ocean"
+                className="mt-2.5 sm:mt-3 inline-flex items-center gap-2 text-sm sm:text-[15.5px] font-bold text-navy underline decoration-coral decoration-2 underline-offset-4 hover:text-ocean"
               >
                 See How We Grow Doctor Brands →
               </a>
             </div>
 
             {/* Right Collage Visual (Exact layout matching Lovable reference) */}
-            <div className="relative mx-auto lg:mr-0 lg:ml-auto h-[480px] w-full max-w-[530px] sm:h-[560px]">
+            <div className="relative mx-auto lg:mr-0 lg:ml-auto h-[440px] w-full max-w-[440px] sm:h-[520px] sm:max-w-[530px] lg:h-[560px]">
               {/* Yellow glow behind dentist card */}
               <div
                 aria-hidden="true"
-                className="absolute -right-6 top-0 h-64 w-64 rounded-full bg-lemon/60 blur-3xl pointer-events-none"
+                className="absolute -right-6 top-0 h-48 w-48 sm:h-64 sm:w-64 rounded-full bg-lemon/60 blur-3xl pointer-events-none"
               />
 
               {/* Dotted curving path SVG (black line keeps moving) */}
@@ -594,13 +594,13 @@ export default function Index() {
               </svg>
 
               {/* Coral Star marker top-left */}
-              <svg viewBox="0 0 24 24" className="absolute left-[2%] top-[0%] h-8 w-8 text-coral animate-spin-slow pointer-events-none" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="absolute left-[2%] top-[0%] h-6 w-6 sm:h-8 sm:w-8 text-coral animate-spin-slow pointer-events-none" aria-hidden="true">
                 <path fill="currentColor" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" />
               </svg>
 
               {/* 1. Doctor 1 Portrait Card (Top Left - Peach Frame) */}
               <div
-                className="absolute left-[4%] top-[6%] w-[46%] rounded-[2rem] border-2 border-navy bg-peach p-2 hard-shadow z-10"
+                className="absolute left-[2%] sm:left-[4%] top-[4%] sm:top-[6%] w-[48%] sm:w-[46%] rounded-[1.6rem] sm:rounded-[2rem] border-2 border-navy bg-peach p-1.5 sm:p-2 hard-shadow z-10"
                 style={{ transform: "rotate(-5deg)" }}
               >
                 <img
@@ -608,19 +608,19 @@ export default function Index() {
                   alt="Concept portrait of a dermatologist for a personal brand shoot"
                   width="768"
                   height="960"
-                  className="aspect-[4/5] w-full rounded-[1.6rem] object-cover"
+                  className="aspect-[4/5] w-full rounded-[1.3rem] sm:rounded-[1.6rem] object-cover"
                 />
-                <span className="absolute -bottom-4 left-4 rounded-full border-2 border-navy bg-white px-3 py-1 text-xs font-bold text-navy shadow-sm whitespace-nowrap">
+                <span className="absolute -bottom-3 sm:-bottom-4 left-2 sm:left-4 rounded-full border-2 border-navy bg-white px-2 py-0.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-bold text-navy shadow-sm whitespace-nowrap">
                   Dermatology · Brand shoot
                 </span>
               </div>
 
               {/* 2. Dentist Reel Card (Top Right - Navy Frame) */}
               <div
-                className="absolute right-[2%] top-[0%] w-[38%] rounded-[1.6rem] border-2 border-navy bg-navy p-1.5 hard-shadow z-10"
+                className="absolute right-[2%] top-[0%] w-[42%] sm:w-[38%] rounded-[1.4rem] sm:rounded-[1.6rem] border-2 border-navy bg-navy p-1 sm:p-1.5 hard-shadow z-10"
                 style={{ transform: "rotate(6deg)" }}
               >
-                <div className="relative overflow-hidden rounded-[1.3rem]">
+                <div className="relative overflow-hidden rounded-[1.1rem] sm:rounded-[1.3rem]">
                   <img
                     src={reelImg}
                     alt="Concept reel frame of a dentist explaining dental care"
@@ -629,11 +629,11 @@ export default function Index() {
                     className="aspect-[9/14] w-full object-cover"
                   />
                   <span className="absolute inset-0 grid place-items-center">
-                    <span className="grid h-14 w-14 place-items-center rounded-full bg-coral border-2 border-navy animate-pulse-soft">
-                      <Play className="h-6 w-6 fill-navy" />
+                    <span className="grid h-10 w-10 sm:h-14 sm:w-14 place-items-center rounded-full bg-coral border-2 border-navy animate-pulse-soft">
+                      <Play className="h-4 w-4 sm:h-6 sm:w-6 fill-navy" />
                     </span>
                   </span>
-                  <span className="absolute bottom-2 left-2 right-2 rounded-xl bg-white/95 px-2 py-1 text-[11px] font-bold text-navy text-center">
+                  <span className="absolute bottom-1.5 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2 rounded-lg sm:rounded-xl bg-white/95 px-1 sm:px-2 py-0.5 sm:py-1 text-[9px] sm:text-[11px] font-bold text-navy text-center truncate">
                     “3 brushing myths” · Reel
                   </span>
                 </div>
@@ -641,70 +641,70 @@ export default function Index() {
 
               {/* Cyan Camera Badge (Top Center) */}
               <span
-                className="absolute left-[46%] top-[2%] z-30 grid h-11 w-11 place-items-center rounded-2xl border-2 border-navy bg-turq text-navy rotate-12"
+                className="absolute left-[44%] sm:left-[46%] top-[2%] z-30 grid h-8 w-8 sm:h-11 sm:w-11 place-items-center rounded-xl sm:rounded-2xl border-2 border-navy bg-turq text-navy rotate-12"
               >
-                <Camera className="h-5 w-5" />
+                <Camera className="h-4 w-4 sm:h-5 sm:w-5" />
               </span>
 
-              {/* Pink Heart Badge (Between Doctor 1 & Dentist Reel) */}
+              {/* Pink Heart Badge (Between Doctor 1 & Dentist Reel - kept higher so it never touches Doctor 1's badge) */}
               <span
-                className="absolute right-[38%] top-[40%] z-30 grid h-12 w-12 place-items-center rounded-full border-2 border-navy bg-pink"
+                className="absolute right-[40%] sm:right-[38%] top-[34%] sm:top-[40%] z-30 grid h-9 w-9 sm:h-12 sm:w-12 place-items-center rounded-full border-2 border-navy bg-pink"
               >
-                <Heart className="h-5 w-5 fill-cream text-cream" />
+                <Heart className="h-4 w-4 sm:h-5 sm:w-5 fill-cream text-cream" />
               </span>
 
               {/* 3. Comment Bubble: Nicely floated above Cardiologist card */}
               <span
-                className="absolute left-[40%] bottom-[38%] z-30 rounded-2xl rounded-bl-none border-2 border-navy bg-white px-3 py-1.5 text-xs font-bold text-navy hard-shadow-sm whitespace-nowrap"
+                className="absolute left-[32%] sm:left-[40%] bottom-[42%] sm:bottom-[38%] z-30 rounded-xl sm:rounded-2xl rounded-bl-none border-2 border-navy bg-white px-2.5 py-1 sm:px-3 sm:py-1.5 text-[10px] sm:text-xs font-bold text-navy hard-shadow-sm whitespace-nowrap"
               >
-                <MessageCircle className="mr-1 inline h-3.5 w-3.5 text-navy" />
+                <MessageCircle className="mr-1 inline h-3 w-3 sm:h-3.5 sm:w-3.5 text-navy" />
                 “So helpful, doctor!”
               </span>
 
               {/* 4. Cardiologist Profile Concept (Center-Left - Solid White Background) */}
               <div
-                className="absolute bottom-[4%] left-[22%] w-[44%] rounded-3xl border-2 border-navy bg-white p-3 hard-shadow z-20"
+                className="absolute bottom-[4%] left-[16%] sm:left-[22%] w-[48%] sm:w-[44%] rounded-2xl sm:rounded-3xl border-2 border-navy bg-white p-2.5 sm:p-3 hard-shadow z-20"
                 style={{ transform: "rotate(3deg)" }}
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                   <img
                     src={doc2Img}
                     alt=""
                     width="768"
                     height="960"
-                    className="h-10 w-10 rounded-full border-2 border-navy object-cover"
+                    className="h-8 w-8 sm:h-10 sm:w-10 rounded-full border-2 border-navy object-cover"
                   />
-                  <div className="text-xs min-w-0">
+                  <div className="text-[10px] sm:text-xs min-w-0">
                     <p className="font-bold text-navy truncate">dr.heart.talks</p>
-                    <p className="text-muted-foreground truncate">Cardiologist · Profile concept</p>
+                    <p className="text-muted-foreground truncate text-[9px] sm:text-xs">Cardiologist · Profile</p>
                   </div>
                 </div>
-                <div className="mt-2 grid grid-cols-3 gap-1">
-                  <div className="aspect-square rounded-md bg-coral" />
-                  <div className="aspect-square rounded-md bg-turq" />
-                  <div className="aspect-square rounded-md bg-sunny" />
-                  <div className="aspect-square rounded-md bg-grape" />
-                  <div className="aspect-square rounded-md bg-sky" />
-                  <div className="aspect-square rounded-md bg-pink" />
+                <div className="mt-1.5 sm:mt-2 grid grid-cols-3 gap-1">
+                  <div className="aspect-square rounded-[4px] sm:rounded-md bg-coral" />
+                  <div className="aspect-square rounded-[4px] sm:rounded-md bg-turq" />
+                  <div className="aspect-square rounded-[4px] sm:rounded-md bg-sunny" />
+                  <div className="aspect-square rounded-[4px] sm:rounded-md bg-grape" />
+                  <div className="aspect-square rounded-[4px] sm:rounded-md bg-sky" />
+                  <div className="aspect-square rounded-[4px] sm:rounded-md bg-pink" />
                 </div>
               </div>
 
               {/* 5. Mon · Reel drop pill: Placed cleanly on left of Cardiologist card, below Doctor 1 badge */}
               <div
-                className="absolute left-[0%] bottom-[22%] z-20 rounded-2xl border-2 border-navy bg-sunny px-3 py-2 text-xs font-bold text-navy hard-shadow-sm whitespace-nowrap"
+                className="absolute left-[0%] bottom-[20%] sm:bottom-[22%] z-20 rounded-xl sm:rounded-2xl border-2 border-navy bg-sunny px-2 sm:px-3 py-1 sm:py-2 text-[10px] sm:text-xs font-bold text-navy hard-shadow-sm whitespace-nowrap"
                 style={{ transform: "rotate(-8deg)" }}
               >
-                <CalendarDays className="mr-1 inline h-4 w-4" />
+                <CalendarDays className="mr-1 inline h-3 w-3 sm:h-4 sm:w-4" />
                 Mon · Reel drop
               </div>
 
               {/* 6. Reach Trend Card (Lower Right - Mint Frame, fully legible) */}
               <div
-                className="absolute bottom-[30%] right-[0%] w-[34%] rounded-2xl border-2 border-navy bg-mint p-3 hard-shadow-sm z-20"
+                className="absolute bottom-[28%] sm:bottom-[30%] right-[0%] w-[38%] sm:w-[34%] rounded-xl sm:rounded-2xl border-2 border-navy bg-mint p-2 sm:p-3 hard-shadow-sm z-20"
                 style={{ transform: "rotate(-4deg)" }}
               >
-                <p className="flex items-center gap-1 text-[11px] font-bold text-navy">
-                  <TrendingUp className="h-3.5 w-3.5 text-emerald" /> Reach trend
+                <p className="flex items-center gap-1 text-[10px] sm:text-[11px] font-bold text-navy">
+                  <TrendingUp className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-emerald" /> Reach trend
                 </p>
                 <svg viewBox="0 0 100 40" className="mt-1 w-full">
                   <polyline
@@ -714,7 +714,7 @@ export default function Index() {
                     strokeWidth="3"
                   />
                 </svg>
-                <p className="text-[10px] text-muted-foreground">Illustrative chart</p>
+                <p className="text-[9px] sm:text-[10px] text-muted-foreground">Illustrative chart</p>
               </div>
 
               {/* 7. Rotating Yellow Circular Seal: Pinned to the top-right corner of Reach Trend */}
@@ -733,13 +733,13 @@ export default function Index() {
 
               {/* Purple Globe Badge (Bottom Right) */}
               <span
-                className="absolute right-[6%] bottom-[6%] z-30 grid h-11 w-11 place-items-center rounded-full border-2 border-navy bg-grape text-cream"
+                className="absolute right-[4%] sm:right-[6%] bottom-[5%] sm:bottom-[6%] z-30 grid h-8 w-8 sm:h-11 sm:w-11 place-items-center rounded-full border-2 border-navy bg-grape text-cream"
               >
-                <Globe className="h-5 w-5" />
+                <Globe className="h-4 w-4 sm:h-5 sm:w-5" />
               </span>
 
               {/* Ocean 4-point Star (Bottom Center) */}
-              <svg viewBox="0 0 24 24" className="absolute right-[44%] bottom-[0%] h-6 w-6 text-ocean animate-spin-slow pointer-events-none" aria-hidden="true">
+              <svg viewBox="0 0 24 24" className="absolute right-[44%] bottom-[0%] h-5 w-5 sm:h-6 sm:w-6 text-ocean animate-spin-slow pointer-events-none" aria-hidden="true">
                 <path fill="currentColor" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z" />
               </svg>
             </div>
@@ -749,8 +749,8 @@ export default function Index() {
         {/* ============================================================== */}
         {/* SECTION 2: NAVY VALUE BAR */}
         {/* ============================================================== */}
-        <section className="bg-navy py-6 md:py-8 text-cream">
-          <div className="mx-auto flex max-w-[1440px] flex-col items-center gap-4 px-4 sm:px-6 lg:px-[108px] lg:flex-row lg:justify-between">
+        <section className="bg-navy py-6 md:py-8 text-cream overflow-hidden">
+          <div className="mx-auto flex max-w-[1440px] flex-col items-start sm:items-center gap-4 px-4 sm:px-6 lg:px-[108px] lg:flex-row lg:justify-between">
             <div className="flex items-center gap-3 shrink-0">
               <div className="flex gap-1 text-sunny shrink-0">
                 {[...Array(3)].map((_, i) => (
@@ -763,18 +763,20 @@ export default function Index() {
                 Building Digital Presence for Modern Healthcare Professionals
               </p>
             </div>
-            <div className="flex flex-nowrap items-center gap-2">
-              <div className="whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-bold text-navy md:px-4 md:py-2 md:text-sm bg-sunny">
-                Specialty-first strategy
-              </div>
-              <div className="whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-bold text-navy md:px-4 md:py-2 md:text-sm bg-turq">
-                Doctor-approved content
-              </div>
-              <div className="whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-bold text-navy md:px-4 md:py-2 md:text-sm bg-pink">
-                Scripting to publishing
-              </div>
-              <div className="whitespace-nowrap rounded-full px-3 py-1.5 text-xs font-bold text-navy md:px-4 md:py-2 md:text-sm bg-sky">
-                Social + website, connected
+            <div className="w-full -mx-4 px-4 overflow-x-auto no-scrollbar lg:w-auto lg:mx-0 lg:px-0 lg:overflow-visible">
+              <div className="flex flex-nowrap items-center gap-2 w-max py-1">
+                <div className="whitespace-nowrap rounded-full px-2.5 py-1 text-[11.5px] font-bold text-navy sm:px-4 sm:py-2 sm:text-sm bg-sunny">
+                  Specialty-first strategy
+                </div>
+                <div className="whitespace-nowrap rounded-full px-2.5 py-1 text-[11.5px] font-bold text-navy sm:px-4 sm:py-2 sm:text-sm bg-turq">
+                  Doctor-approved content
+                </div>
+                <div className="whitespace-nowrap rounded-full px-2.5 py-1 text-[11.5px] font-bold text-navy sm:px-4 sm:py-2 sm:text-sm bg-pink">
+                  Scripting to publishing
+                </div>
+                <div className="whitespace-nowrap rounded-full px-2.5 py-1 text-[11.5px] font-bold text-navy sm:px-4 sm:py-2 sm:text-sm bg-sky">
+                  Social + website, connected
+                </div>
               </div>
             </div>
           </div>
@@ -2738,24 +2740,46 @@ export default function Index() {
               </p>
             </div>
 
-            <div className="mt-12 grid grid-cols-2 gap-5 md:grid-cols-4">
+            <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 max-w-4xl mx-auto">
               {[
-                { title: "Founder & Growth Strategist", bg: "bg-coral", delay: "" },
-                { title: "Client Relations Manager", bg: "bg-turq", delay: "md:mt-10" },
-                { title: "Content Strategist", bg: "bg-sunny", delay: "" },
-                { title: "Social Media Manager", bg: "bg-pink", delay: "md:mt-10" },
+                {
+                  name: "Divya Jain",
+                  title: "Founder",
+                  image: "/team/founder.png?v=2",
+                  bg: "bg-coral",
+                  delay: "",
+                },
+                {
+                  name: "Prakshal Jain",
+                  title: "CTO",
+                  image: "/team/cto.png?v=2",
+                  bg: "bg-sunny",
+                  delay: "md:mt-6",
+                },
+                {
+                  name: "Nisha Singh",
+                  title: "Lead Developer",
+                  image: "/team/lead-dev.png?v=2",
+                  bg: "bg-pink",
+                  delay: "",
+                },
               ].map((member, idx) => (
                 <div key={idx} className={member.delay}>
                   <div className="group text-center">
                     <div
-                      className={`mx-auto grid aspect-square w-full max-w-[200px] place-items-center border-2 border-navy transition duration-500 group-hover:-translate-y-2 group-hover:rotate-3 animate-blob ${member.bg}`}
+                      className={`mx-auto aspect-square w-full max-w-[200px] overflow-hidden border-2 border-navy transition duration-500 group-hover:-translate-y-2 group-hover:rotate-3 animate-blob ${member.bg} hard-shadow-sm`}
+                      style={{ transform: "translateZ(0)" }}
                     >
-                      <UserRound className="h-14 w-14 opacity-60 text-navy" />
+                      <img
+                        src={member.image}
+                        alt={`${member.name} - ${member.title}`}
+                        className="h-full w-full object-cover object-center"
+                      />
                     </div>
-                    <p className="mt-3 inline-block rounded-full border-2 border-navy bg-card px-3 py-1 text-xs font-bold text-navy shadow-sm">
-                      Team photo coming soon
+                    <p className="mt-3.5 inline-block rounded-full border-2 border-navy bg-card px-3.5 py-1 text-xs font-bold text-navy shadow-sm">
+                      {member.name}
                     </p>
-                    <p className="mt-2 font-extrabold text-navy text-sm md:text-base">
+                    <p className="mt-2.5 font-extrabold text-navy text-sm md:text-base">
                       {member.title}
                     </p>
                   </div>
@@ -2764,7 +2788,7 @@ export default function Index() {
             </div>
 
             <p className="mt-8 text-center text-sm text-muted-foreground">
-              Real names, photos and bios will be added once confirmed by Sociokraft.
+              The leadership & technical team powering modern healthcare brands.
             </p>
           </div>
         </section>

@@ -7,10 +7,12 @@ interface FooterProps {
 
 export default function Footer({ onOpenAudit }: FooterProps) {
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showBottomBar, setShowBottomBar] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setShowBackToTop(window.scrollY > 400);
+      setShowBottomBar(window.scrollY > 300);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -33,7 +35,7 @@ export default function Footer({ onOpenAudit }: FooterProps) {
 
   return (
     <>
-      <footer className="relative bg-navy pt-16 text-cream">
+      <footer className="relative bg-navy pt-16 pb-20 md:pb-0 text-cream">
         {/* Top Wave Divider */}
         <svg
           viewBox="0 0 1440 60"
@@ -252,8 +254,14 @@ export default function Footer({ onOpenAudit }: FooterProps) {
         <ArrowUp className="h-5 w-5" />
       </button>
 
-      {/* Mobile Bottom Fixed Bar */}
-      <div className="fixed inset-x-3 bottom-3 z-40 flex gap-2 md:hidden">
+      {/* Mobile Bottom Fixed Bar (Appears after scrolling past hero) */}
+      <div
+        className={`fixed inset-x-3 bottom-3 z-40 flex gap-2 transition-all duration-300 md:hidden ${
+          showBottomBar
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-8 opacity-0"
+        }`}
+      >
         <button
           onClick={() => onOpenAudit && onOpenAudit()}
           className="flex-1 rounded-full border-2 border-navy bg-coral py-3 font-bold hard-shadow-sm text-navy text-sm"
