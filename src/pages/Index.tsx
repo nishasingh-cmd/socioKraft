@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import {
@@ -38,6 +39,7 @@ import {
   Quote,
   Monitor,
   Smartphone,
+  ExternalLink,
 } from "lucide-react";
 
 // Image URLs (from public/assets downloaded from reference)
@@ -219,6 +221,7 @@ export default function Index() {
     aspect: string;
     badge: string;
     image?: string;
+    demoUrl?: string;
     isCards?: boolean;
     isLogoPreview?: boolean;
     isWebPreview?: boolean;
@@ -244,10 +247,10 @@ export default function Index() {
       category: "Educational Content",
       objective: "Explain warning signs simply",
       services: "Research · Design · Copy",
-      bg: "bg-coral",
+      bg: "bg-[#f6f4ec]",
       aspect: "aspect-square",
       badge: "Concept demo",
-      isCards: true,
+      image: "/heart-health-carousel.png",
     },
     {
       title: "Portfolio Website Concept",
@@ -277,10 +280,10 @@ export default function Index() {
       category: "Branding",
       objective: "A cohesive visual language",
       services: "Logo · Palette · Templates",
-      bg: "bg-grape text-cream",
+      bg: "bg-[#e8e4dc]",
       aspect: "aspect-square",
       badge: "Concept demo",
-      isLogoPreview: true,
+      image: "/clinic-brand-identity.png",
     },
     {
       title: "Behind-the-Scenes Shoot",
@@ -299,21 +302,22 @@ export default function Index() {
       category: "Educational Content",
       objective: "Answer real patient questions",
       services: "Topic research · Design",
-      bg: "bg-turq",
+      bg: "bg-[#8dd3c7]",
       aspect: "aspect-[3/4]",
       badge: "Concept demo",
-      isCards: true,
+      image: "/patient-faq-series.png",
     },
     {
       title: "Dental Implant Landing Page",
       specialty: "Dentistry",
       category: "Doctor Websites",
-      objective: "Clear treatment information & next steps",
-      services: "Landing page · WhatsApp CTA",
-      bg: "bg-pink",
-      aspect: "aspect-square",
+      objective: "Clear treatment information & 3D guided surgery booking",
+      services: "Landing page · 3D Guided Demo · WhatsApp CTA",
+      bg: "bg-[#0b1f32]",
+      aspect: "aspect-[1024/491]",
       badge: "Concept demo",
-      isWebPreview2: true,
+      image: "/dental-clinic-site.png",
+      demoUrl: "/demo/dental",
     },
   ];
 
@@ -3241,7 +3245,16 @@ export default function Index() {
               </p>
             </div>
 
-            <div className="mt-6 flex gap-2">
+            <div className="mt-6 flex flex-wrap gap-2">
+              {selectedProject.demoUrl && (
+                <Link
+                  to={selectedProject.demoUrl}
+                  className="btn-pill-navy inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-sm"
+                >
+                  <span>Explore Live Demo</span>
+                  <ExternalLink className="h-4 w-4" />
+                </Link>
+              )}
               <button
                 onClick={() => {
                   setSelectedProject(null);
