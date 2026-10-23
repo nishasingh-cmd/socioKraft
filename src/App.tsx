@@ -11,8 +11,6 @@ import CaseStudies from "./pages/CaseStudies.tsx";
 import Contact from "./pages/Contact.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
-import DentalDemo from "./pages/DentalDemo.tsx";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,7 +26,6 @@ const App = () => (
           <Route path="/services" element={<Services />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/demo/dental" element={<DentalDemo />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

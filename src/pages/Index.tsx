@@ -312,12 +312,11 @@ export default function Index() {
       specialty: "Dentistry",
       category: "Doctor Websites",
       objective: "Clear treatment information & 3D guided surgery booking",
-      services: "Landing page · 3D Guided Demo · WhatsApp CTA",
+      services: "Landing page · WhatsApp CTA",
       bg: "bg-[#0b1f32]",
       aspect: "aspect-[1024/491]",
       badge: "Concept demo",
       image: "/dental-clinic-site.png",
-      demoUrl: "/demo/dental",
     },
   ];
 
@@ -345,6 +344,7 @@ export default function Index() {
       type: "Carousel",
       desc: "Clears up common worries about orthodontic treatment.",
       bg: "bg-turq",
+      image: "/myth-vs-fact-braces.png",
       span: "",
     },
     {
@@ -353,6 +353,7 @@ export default function Index() {
       type: "Talking-head reel",
       desc: "Answers the three questions patients ask most.",
       bg: "bg-sunny",
+      image: "/knee-pain-faqs.png",
       span: "",
     },
     {
@@ -388,6 +389,7 @@ export default function Index() {
       type: "Brand story",
       desc: "A personal story that builds connection and trust.",
       bg: "bg-pink",
+      image: "/why-pediatrics.png",
       span: "",
     },
   ];
