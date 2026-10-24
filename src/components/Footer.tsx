@@ -1,5 +1,6 @@
 import { ArrowUp, MessageCircle } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 interface FooterProps {
   onOpenAudit?: () => void;
@@ -117,9 +118,9 @@ export default function Footer({ onOpenAudit }: FooterProps) {
                 </a>
               </li>
               <li>
-                <a href="#faq" onClick={(e) => { e.preventDefault(); scrollTo("#faq"); }}>
+                <Link to="/faq" className="hover:text-sunny transition">
                   FAQs
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo("#contact"); }}>
@@ -180,9 +181,9 @@ export default function Footer({ onOpenAudit }: FooterProps) {
                 <span className="opacity-60">Branding Tips (soon)</span>
               </li>
               <li>
-                <a href="#faq" onClick={(e) => { e.preventDefault(); scrollTo("#faq"); }}>
+                <Link to="/faq" className="hover:text-sunny transition">
                   Frequently Asked Questions
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

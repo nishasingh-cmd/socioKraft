@@ -78,13 +78,15 @@ const GrowthCalculator = () => {
             </div>
           </div>
 
-          <Link
-            to="/contact"
+          <a
+            href="https://wa.me/919999999999?text=Hi%20Sociokraft,%20I'd%20like%20to%20claim%20my%20practice%20growth%20strategy%20plan."
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full btn-glow bg-bronze hover:bg-bronze/90 text-white text-xs md:text-sm py-3.5 px-6 rounded-xl flex items-center justify-center gap-2 font-semibold shadow-xs"
           >
             <span>Claim Your Strategy Plan</span>
             <ArrowRight size={16} />
-          </Link>
+          </a>
         </div>
       </div>
     </div>

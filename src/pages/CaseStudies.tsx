@@ -146,7 +146,7 @@ const projects: Project[] = [
     image: "/wealthmine-advisory.png",
     imageAlt: "Wealthmine Advisory Platform Preview",
     placeholderName: "public/wealthmine-advisory.png",
-    visitUrl: "/contact",
+    visitUrl: "https://wa.me/919999999999?text=Hi%20Sociokraft,%20I'm%20inquiring%20about%20advisory%20systems.",
     visitText: "Inquire About Advisory Systems",
     isConfidential: true,
     confidentialNotice: "Proprietary software architecture for stock research automation and live exchange feeds."
@@ -402,13 +402,15 @@ const CaseStudies = () => {
                             <p className="text-xs text-taupe font-mono">
                               Interested in custom confidential software engineering for your firm?
                             </p>
-                            <Link
-                              to="/contact"
+                            <a
+                              href="https://wa.me/919999999999?text=Hi%20Sociokraft,%20I'd%20like%20to%20schedule%20a%20private%20discussion%20regarding%20software%20engineering."
+                              target="_blank"
+                              rel="noopener noreferrer"
                               className="btn-glow bg-bronze hover:bg-bronze/90 text-white text-xs md:text-sm py-3 px-6 rounded-xl flex items-center gap-2 font-semibold shadow-xs"
                             >
                               <MessageSquare size={14} />
                               <span>Schedule Private Discussion</span>
-                            </Link>
+                            </a>
                           </div>
                         ) : (
                           project.visitUrl && (

@@ -302,13 +302,15 @@ const Services = () => {
                         ))}
                       </div>
 
-                      <Link
-                        to="/contact"
+                      <a
+                        href="https://wa.me/919999999999?text=Hi%20Sociokraft,%20I'd%20like%20to%20book%20a%20strategy%20session%20for%20my%20medical%20practice."
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full btn-glow bg-bronze hover:bg-bronze/90 text-white text-xs py-3 px-5 rounded-xl flex items-center justify-center gap-2 font-semibold shadow-xs mt-4"
                       >
                         <span>Book Strategy Session</span>
                         <ArrowRight size={14} />
-                      </Link>
+                      </a>
                     </div>
                   </div>
                 </div>
