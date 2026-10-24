@@ -103,9 +103,9 @@ export default function Footer({ onOpenAudit }: FooterProps) {
                 </a>
               </li>
               <li>
-                <a href="#work" onClick={(e) => { e.preventDefault(); scrollTo("#work"); }}>
+                <Link to="/work" className="hover:text-sunny transition">
                   Our Work
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#pricing" onClick={(e) => { e.preventDefault(); scrollTo("#pricing"); }}>

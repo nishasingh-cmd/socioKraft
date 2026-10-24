@@ -560,12 +560,12 @@ export default function Index() {
                 >
                   Claim Your Free Digital Audit
                 </button>
-                <a
-                  href="#work"
+                <Link
+                  to="/work"
                   className="btn-pill-card px-5 py-3 sm:px-6 sm:py-3.5 text-base sm:text-[17.5px] font-bold text-center"
                 >
                   Explore Our Work
-                </a>
+                </Link>
               </div>
 
               <p className="mt-2 text-xs sm:text-[13.5px] text-muted-foreground">

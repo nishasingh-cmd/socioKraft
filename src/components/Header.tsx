@@ -208,17 +208,23 @@ export default function Header({ onOpenAudit }: HeaderProps) {
               />
             </Link>
 
-            <a
-              href="#work"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("#work");
-              }}
-              className="group relative py-1 text-sm font-bold text-navy hover:text-ocean transition"
+            <Link
+              to="/work"
+              className={`group relative py-1 text-sm font-bold transition ${
+                location.pathname === "/work" || location.pathname === "/our-work"
+                  ? "text-ocean"
+                  : "text-navy hover:text-ocean"
+              }`}
             >
               Our Work
-              <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded bg-coral transition-transform duration-300 group-hover:scale-x-100" />
-            </a>
+              <span
+                className={`absolute -bottom-0.5 left-0 h-0.5 w-full rounded bg-coral transition-transform duration-300 ${
+                  location.pathname === "/work" || location.pathname === "/our-work"
+                    ? "scale-x-100"
+                    : "scale-x-0 origin-left group-hover:scale-x-100"
+                }`}
+              />
+            </Link>
 
             <Link
               to="/about"
@@ -337,16 +343,15 @@ export default function Header({ onOpenAudit }: HeaderProps) {
           >
             Home
           </Link>
-          <a
-            href="#work"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick("#work");
-            }}
-            className="text-3xl font-extrabold text-navy transition hover:translate-x-2"
+          <Link
+            to="/work"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`text-3xl font-extrabold transition hover:translate-x-2 ${
+              location.pathname === "/work" || location.pathname === "/our-work" ? "text-ocean" : "text-navy"
+            }`}
           >
             Our Work
-          </a>
+          </Link>
           <Link
             to="/about"
             onClick={() => setMobileMenuOpen(false)}
