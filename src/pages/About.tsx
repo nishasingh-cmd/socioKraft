@@ -1,29 +1,42 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import {
-  Target,
-  Eye,
-  ArrowRight,
-  ShieldCheck,
-  Lightbulb,
-  Handshake,
-  Cpu,
-  Layers,
-  Sparkles,
-  Building2,
-  Gamepad2,
-  Stethoscope,
-  LineChart,
-  Star,
-  CheckCircle2,
-  ChevronLeft,
-  ChevronRight
-} from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import SectionHeading from "@/components/SectionHeading";
-import LogoMarquee from "@/components/LogoMarquee";
+import {
+  Stethoscope,
+  Sparkles,
+  Check,
+  Heart,
+  Camera,
+  Globe,
+  MessageCircle,
+  Star,
+  Clock,
+  ChevronLeft,
+  ChevronRight,
+  X,
+  Brain,
+  Palette,
+  Quote,
+  ShieldCheck,
+  Award,
+  ArrowRight,
+  Lightbulb,
+  Users,
+  CheckCircle2,
+  Play,
+  Film,
+  FileText,
+  TrendingUp,
+  Target,
+  Eye,
+} from "lucide-react";
+
+// Image URLs (same as Home page reference)
+const doc1Img = "/assets/doc-1-D56fzcjv.jpg";
+const doc2Img = "/assets/doc-2-BjDT3-tI.jpg";
+const reelImg = "/assets/reel-BeT_mf_x.jpg";
+const shootImg = "/assets/shoot-CzRfnzF2.jpg";
 
 const GoogleIcon = () => (
   <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24">
@@ -49,636 +62,1017 @@ const GoogleIcon = () => (
 const clientReviews = [
   {
     id: 1,
-    name: "Dr Gaurav Neurospine",
+    name: "Dr. Gaurav Neurospine",
     initials: "DG",
-    avatarBg: "bg-emerald-700",
+    avatarBg: "bg-emerald",
     category: "Healthcare Digital Growth",
-    time: "Verified Client",
     stars: 5,
-    text: "Outstanding digital transformation for our neurospine clinic. SocioKraft built a high-converting patient appointment website and dominated local search SEO, boosting our patient inquiries by +180%."
+    text: "Outstanding digital transformation for our neurospine clinic. SocioKraft built a high-converting patient appointment website and dominated local search SEO, boosting our qualified inquiries by +180%.",
   },
   {
     id: 2,
-    name: "Elite Eventures",
-    initials: "EE",
-    avatarBg: "bg-stone-800",
-    category: "3D Exhibition Stands",
-    time: "Verified Client",
+    name: "Dr. Priya Aesthetic Skin",
+    initials: "PS",
+    avatarBg: "bg-coral",
+    category: "Dermatology & Reels",
     stars: 5,
-    text: "Sincere appreciation to SocioKraft for outstanding support during our nationwide exhibition stand setups. Highly dependable across concept planning, 3D architectural renders, and trade booth execution."
+    text: "The reel scripting and on-site clinic shoots took all the stress off my shoulders. Patients walk into our consultation room having already watched my videos and knowing our treatment philosophy.",
   },
   {
     id: 3,
-    name: "DR-RASHEL",
-    initials: "DR",
-    avatarBg: "bg-indigo-700",
-    category: "Interactive Brand Activation",
-    time: "Verified Client",
+    name: "Dr. Anand Cardiac Care",
+    initials: "AC",
+    avatarBg: "bg-ocean",
+    category: "Cardiology Patient Education",
     stars: 5,
-    text: "The custom hydration touchscreen game SocioKraft built for our exhibition booth was an absolute visitor magnet. Brought our product story to life and drove immense foot traffic throughout the event."
+    text: "Sociokraft understands medical nuance. They never suggest sensationalized clickbait; every script is scientifically accurate and designed to educate real patients with genuine care.",
   },
   {
     id: 4,
-    name: "Wealthmine Advisory Firm",
-    initials: "WA",
-    avatarBg: "bg-blue-800",
-    category: "Custom Fintech Software",
-    time: "Verified Client",
+    name: "Elite Orthopedics Clinic",
+    initials: "EO",
+    avatarBg: "bg-grape",
+    category: "Specialty Practice Growth",
     stars: 5,
-    text: "SocioKraft engineered an automated corporate action tracking platform directly connected to live NSE & BSE feeds. Saved our research team hundreds of hours each month with extreme data accuracy."
-  }
-];
-
-const founders = [
-  {
-    name: "Bhavesh Jain",
-    role: "Founder & Strategy Head",
-    desc: "Spearheading agency growth, client partnerships, and cross-industry digital marketing strategies.",
-    image: "/team/bhavesh.jpg"
-  },
-  {
-    name: "Divya Jain",
-    role: "Co-Founder & Operations",
-    desc: "Managing agency operations, campaign execution, and multi-disciplinary team coordination.",
-    image: "/team/divya.png"
-  }
-];
-
-const ctos = [
-  {
-    name: "Nisha Singh",
-    role: "Lead Developer & CTO",
-    desc: "Architecting high-converting web applications, spatial 3D experiences, and conversion engines.",
-    image: "/team/nisha.png"
-  },
-  {
-    name: "Prakshal Jain",
-    role: "Lead Developer & CTO",
-    desc: "Driving technical innovation, full-stack software development, and proprietary fintech platforms.",
-    image: "/team/prakshal.png"
-  }
-];
-
-const approaches = [
-  {
-    icon: Cpu,
-    title: "Technology-First Execution",
-    desc: "We build custom 3D spatial renders, interactive touchscreen games, and full-stack software engines when brands need to stand out."
-  },
-  {
-    icon: Lightbulb,
-    title: "Data & ROI Centric",
-    desc: "Every marketing strategy, search engine optimization campaign, and web funnel is driven by measurable revenue & lead growth metrics."
-  },
-  {
-    icon: ShieldCheck,
-    title: "Enterprise NDA Security",
-    desc: "Trusted by stock advisory practices and enterprise leaders under strict Non-Disclosure Agreements (NDAs)."
+    text: "From our doctor profile makeover to monthly educational carousels, Sociokraft has given our multi-doctor clinic a cohesive, premium identity that patients instantly trust.",
   },
 ];
 
-const industryPillars = [
-  {
-    icon: Stethoscope,
-    title: "Healthcare & Medical Transformation",
-    desc: "Ethical doctor branding, practice websites, and organic patient lead surge."
-  },
-  {
-    icon: Building2,
-    title: "Exhibition 3D Spatial Design",
-    desc: "3D booth renders, structural architecture, construction, and venue dismantling."
-  },
-  {
-    icon: Gamepad2,
-    title: "Interactive Booth Gamification",
-    desc: "Touchscreen mini-games designed for live exhibition booths to pull massive foot traffic."
-  },
-  {
-    icon: LineChart,
-    title: "Custom Software & Fintech Platforms",
-    desc: "Bespoke stock advisory engines, portal software, and enterprise systems."
-  }
-];
-
-const About = () => {
+export default function About() {
+  // Modal states
+  const [auditModalOpen, setAuditModalOpen] = useState(false);
+  const [auditSubmitted, setAuditSubmitted] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
 
-  const prevReview = () => {
-    setReviewIndex((prev) => (prev === 0 ? clientReviews.length - 1 : prev - 1));
+  // Audit form state
+  const [auditForm, setAuditForm] = useState({
+    name: "",
+    specialty: "",
+    city: "",
+    phone: "",
+    websiteOrHandle: "",
+  });
+
+  const handleAuditSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuditSubmitted(true);
+    setTimeout(() => {
+      setAuditModalOpen(false);
+      setAuditSubmitted(false);
+      setAuditForm({ name: "", specialty: "", city: "", phone: "", websiteOrHandle: "" });
+    }, 2500);
   };
 
   const nextReview = () => {
-    setReviewIndex((prev) => (prev === clientReviews.length - 1 ? 0 : prev + 1));
+    setReviewIndex((prev) => (prev + 1) % clientReviews.length);
   };
 
+  const prevReview = () => {
+    setReviewIndex((prev) => (prev - 1 + clientReviews.length) % clientReviews.length);
+  };
+
+  // Marquee principles ticker
+  const marqueeItems = [
+    { name: "Specialty-First Strategy", bg: "bg-coral text-navy" },
+    { name: "100% Doctor-Approved Content", bg: "bg-sunny text-navy" },
+    { name: "Clinical Accuracy First", bg: "bg-turq text-navy" },
+    { name: "Scripting to Post-Production", bg: "bg-pink text-navy" },
+    { name: "High-Converting Websites", bg: "bg-emerald text-cream" },
+    { name: "Zero Fluff, Real Medical Trust", bg: "bg-lavender text-navy" },
+    { name: "Respect For Clinical Time", bg: "bg-lemon text-navy" },
+    { name: "Organic Patient Growth", bg: "bg-sky text-navy" },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#F5F3EF] text-ink font-sans selection:bg-bronze selection:text-white">
-      <Header />
+    <div className="min-h-screen bg-cream text-navy selection:bg-coral selection:text-white">
+      <Header onOpenAudit={() => setAuditModalOpen(true)} />
 
-      {/* Hero Section */}
-      <section className="relative w-full h-screen min-h-[700px] max-h-screen overflow-hidden bg-[#F5F3EF]">
-        {/* Existing beige abstract backdrop */}
-        <div className="absolute inset-0 select-none pointer-events-none">
-          <img
-            src="/image.png"
-            alt="Editorial Background"
-            className="w-full h-full object-cover object-center opacity-100"
+      <main>
+        {/* ============================================================== */}
+        {/* SECTION 1: ABOUT HERO (Theme Solid Background) */}
+        {/* ============================================================== */}
+        <section
+          id="top"
+          className="relative min-h-[520px] sm:min-h-[580px] lg:min-h-[620px] w-full flex items-center justify-center overflow-hidden bg-skylight pt-28 pb-16 sm:pt-32 sm:pb-20 text-navy"
+        >
+          {/* Subtle dots pattern background */}
+          <div className="absolute inset-0 dots pointer-events-none" aria-hidden="true" />
+
+          {/* Ambient soft glow auras */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -left-20 top-20 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-[#fcd4dc]/60 blur-3xl"
           />
-        </div>
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-20 top-10 h-72 w-72 sm:h-96 sm:w-96 rounded-full bg-sunny/40 blur-3xl"
+          />
 
-        {/* Content Container positioned ~12% from left and ~28% from top */}
-        <div className="relative z-10 w-full h-full flex flex-col justify-start pl-[6%] sm:pl-[8%] lg:pl-[12%] pt-[20vh] sm:pt-[24vh] lg:pt-[28vh]">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-[700px] text-left"
-          >
-            {/* Eyebrow */}
-            <span className="block text-[14px] uppercase font-mono font-semibold tracking-[0.28em] text-[#8A7B5C] mb-4">
-              ABOUT SOCIOKRAFT
-            </span>
-
-            {/* Headline (Exactly 2 Lines) */}
-            <h1 className="font-heading font-extrabold text-[42px] sm:text-[58px] md:text-[68px] lg:text-[76px] xl:text-[80px] leading-[1.08] tracking-tight text-[#1C1B19] mb-6">
-              We Design <br />
-              <span className="whitespace-nowrap">Digital Experiences</span>
+          {/* Hero Content */}
+          <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 text-center">
+            {/* "About Us" in Big Bold Font */}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-navy">
+              About{" "}
+              <span className="relative inline-block rounded-2xl border-2 border-navy bg-coral px-4 sm:px-6 py-0.5 -rotate-1 text-navy hard-shadow">
+                Us
+              </span>
             </h1>
 
-            {/* Body */}
-            <p className="max-w-[520px] text-[17px] sm:text-[19px] lg:text-[20px] leading-[1.7] text-[#6B6560] font-normal mb-8">
-              We blend strategy, creativity, and engineering to build meaningful digital products, immersive exhibition experiences, and scalable software solutions.
+            {/* Ocean Blue Subheading */}
+            <p className="mt-3.5 sm:mt-4 text-lg sm:text-2xl md:text-[26px] font-extrabold text-ocean">
+              We build authoritative digital presence for modern healthcare leaders.
             </p>
 
-            {/* CTA */}
-            <a
-              href="#story"
-              className="inline-flex items-center justify-center h-[52px] px-8 rounded-[999px] bg-[#1C1B19] text-[#F5F3EF] font-medium text-[15px] hover:bg-[#33302C] transition-colors"
-            >
-              Our Story
-            </a>
-          </motion.div>
-        </div>
-      </section>
+            {/* Small Description */}
+            <p className="mx-auto mt-3 max-w-2xl text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+              We blend medical understanding, high-impact video storytelling, and modern technology
+              to turn clinical expertise into patient trust and undisputed digital leadership.
+            </p>
 
-      {/* Story & Core Philosophy (Awwwards-Quality Editorial Section) */}
-      <section id="story" className="pt-16 pb-12 lg:pt-20 lg:pb-16 bg-[#F5F3EF] border-t border-line relative overflow-hidden">
-        {/* Subtle architectural curved accent entering from bottom-right */}
-        <div className="absolute right-0 bottom-0 pointer-events-none opacity-40 select-none overflow-hidden">
-          <svg width="480" height="380" viewBox="0 0 480 380" fill="none">
-            <path
-              d="M480 380C320 380 180 260 140 100C120 20 160 -40 220 -80"
-              stroke="#8A7B5C"
-              strokeWidth="1.2"
-              strokeDasharray="4 4"
-            />
-            <path
-              d="M480 300C360 300 240 200 200 60"
-              stroke="#8A7B5C"
-              strokeWidth="1"
-              opacity="0.6"
-            />
-          </svg>
-        </div>
-
-        <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Column (58% / 7 cols) */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-7 space-y-6 text-left"
-            >
-              {/* Editorial Headline (Strictly 2 Lines) */}
-              <h2 className="font-heading font-bold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] xl:text-[34px] leading-[1.2] tracking-tight text-[#1C1B19]">
-                We design meaningful digital products <br />
-                <span className="whitespace-nowrap">& immersive brand experiences.</span>
-              </h2>
-
-              {/* Large Rounded Image (drrashelgame.png with optimal framing) */}
-              <motion.div
-                initial={{ scale: 0.96, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="pt-2"
+            {/* Action Buttons */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3.5">
+              <button
+                type="button"
+                onClick={() => setAuditModalOpen(true)}
+                className="btn-pill-coral px-6 py-3.5 text-base font-bold"
               >
-                <div className="rounded-[24px] overflow-hidden border border-[#8A7B5C]/25 shadow-[0_8px_30px_rgba(28,27,25,0.06)] bg-[#171614] h-[320px] sm:h-[380px] md:h-[420px] w-full relative group flex items-center justify-center p-3">
-                  <img
-                    src="/drrashelgame.png"
-                    alt="SocioKraft Interactive Gamification Experience"
-                    className="w-full h-full object-contain object-center group-hover:scale-[1.02] transition-transform duration-700 rounded-xl"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.src = "/dr-rashel-game.png";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent pointer-events-none transition-colors duration-500 rounded-[24px]" />
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Column (42% / 5 cols) - Floating Ivory Paper Panel */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-5"
-            >
-              <div className="bg-[#F8F6F2] border border-[#8A7B5C]/20 rounded-[28px] p-8 sm:p-10 shadow-[0_6px_28px_rgba(28,27,25,0.04)] relative">
-                {/* Top-Right Bronze Badge */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs font-mono uppercase tracking-widest text-[#8A7B5C] font-semibold">
-                    Core Philosophy
-                  </span>
-                  <span className="text-[11px] font-mono font-semibold text-[#8A7B5C] bg-[#8A7B5C]/10 border border-[#8A7B5C]/20 px-3 py-1 rounded-full">
-                    EST. 2026
-                  </span>
-                </div>
-
-                <h3 className="font-heading font-bold text-2xl sm:text-3xl text-[#1C1B19] mb-6 tracking-tight">
-                  Our Philosophy
-                </h3>
-
-                {/* 3 Short Paragraphs with Generous Spacing */}
-                <div className="space-y-5 text-sm sm:text-[15px] text-[#6B6560] leading-relaxed">
-                  <p>
-                    SocioKraft was founded on a singular conviction: modern market leaders require more than conventional agency services. They demand multi-disciplinary craft across digital platforms, spatial environments, and bespoke software.
-                  </p>
-                  <p>
-                    Over the years, we have built a reputation for flawless technical execution combined with creative excellence — taking projects from concept blueprints to live, high-converting reality.
-                  </p>
-                  <p>
-                    Every clinic transformation, interactive exhibition booth, and automated financial platform is engineered to deliver measurable impact and enduring value.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision & Mission Section (Apple x Clay Global Luxury Minimalist) */}
-      <section className="pt-10 pb-16 lg:pt-14 lg:pb-20 bg-[#F5F3EF] relative overflow-hidden">
-        {/* Decorative Background Elements */}
-        <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
-          {/* Faint topographic contour lines */}
-          <svg className="absolute inset-0 w-full h-full opacity-35" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="topoLines" width="200" height="200" patternUnits="userSpaceOnUse">
-                <path d="M 0 50 Q 50 100 100 50 T 200 50" fill="none" stroke="#8A7B5C" strokeWidth="0.5" strokeOpacity="0.15" />
-                <path d="M 0 150 Q 50 100 100 150 T 200 150" fill="none" stroke="#8A7B5C" strokeWidth="0.5" strokeOpacity="0.15" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#topoLines)" />
-          </svg>
-
-          {/* Bronze curved line entering from bottom-left */}
-          <svg className="absolute left-0 bottom-0 opacity-45" width="460" height="340" viewBox="0 0 460 340" fill="none">
-            <path
-              d="M0 340C160 340 300 240 340 100C360 30 320 -30 260 -60"
-              stroke="#8A7B5C"
-              strokeWidth="1.2"
-              strokeDasharray="4 4"
-            />
-            <path
-              d="M0 260C120 260 220 180 260 60"
-              stroke="#8A7B5C"
-              strokeWidth="1"
-              opacity="0.6"
-            />
-          </svg>
-
-          {/* 4x4 Dotted Bronze Grid in Opposite Corners */}
-          <div className="absolute top-12 left-12 grid grid-cols-4 gap-2 opacity-35">
-            {[...Array(16)].map((_, i) => (
-              <div key={`dot-tl-${i}`} className="w-1 h-1 rounded-full bg-[#8A7B5C]" />
-            ))}
-          </div>
-          <div className="absolute bottom-12 right-12 grid grid-cols-4 gap-2 opacity-35">
-            {[...Array(16)].map((_, i) => (
-              <div key={`dot-br-${i}`} className="w-1 h-1 rounded-full bg-[#8A7B5C]" />
-            ))}
-          </div>
-        </div>
-
-        <div className="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-          {/* 1. Statistics Pill (Top) */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white/55 backdrop-blur-sm border border-[rgba(138,123,92,0.22)] rounded-[999px] min-h-[105px] py-4 px-6 sm:px-12 md:px-16 flex flex-col md:flex-row items-center justify-between max-w-5xl mx-auto shadow-[0_4px_24px_rgba(28,27,25,0.03)] mb-12 lg:mb-14 gap-6 md:gap-0"
-          >
-            {/* Stat 1 */}
-            <div className="flex-1 text-center group cursor-default">
-              <div className="text-3xl sm:text-4xl md:text-[44px] font-bold text-[#8A7B5C] group-hover:scale-105 transition-transform duration-300 font-heading leading-none">
-                5+
-              </div>
-              <div className="text-xs sm:text-[15px] text-[#6B6560] font-mono mt-1">
-                Projects Delivered
-              </div>
+                Claim Your Free Digital Audit
+              </button>
+              <a
+                href="#story"
+                className="btn-pill-card px-6 py-3.5 text-base font-bold"
+              >
+                Our Story & Philosophy
+              </a>
             </div>
 
-            {/* Divider 1 */}
-            <div className="hidden md:block h-12 w-[1px] bg-[#8A7B5C]/20 group-hover:bg-[#8A7B5C]/50 transition-colors" />
-
-            {/* Stat 2 */}
-            <div className="flex-1 text-center group cursor-default">
-              <div className="text-3xl sm:text-4xl md:text-[44px] font-bold text-[#8A7B5C] group-hover:scale-105 transition-transform duration-300 font-heading leading-none">
-                100%
-              </div>
-              <div className="text-xs sm:text-[15px] text-[#6B6560] font-mono mt-1">
-                Client Satisfaction
-              </div>
+            {/* Trust badge indicators */}
+            <div className="mt-7 flex flex-wrap items-center justify-center gap-5 text-xs sm:text-sm font-bold text-navy">
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-navy shrink-0" />
+                100% Doctor Approved
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-navy shrink-0" />
+                Specialty-First Strategy
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-navy shrink-0" />
+                Zero Clinical Compromise
+              </span>
             </div>
-
-            {/* Divider 2 */}
-            <div className="hidden md:block h-12 w-[1px] bg-[#8A7B5C]/20 group-hover:bg-[#8A7B5C]/50 transition-colors" />
-
-            {/* Stat 3 */}
-            <div className="flex-1 text-center group cursor-default">
-              <div className="text-3xl sm:text-4xl md:text-[44px] font-bold text-[#8A7B5C] group-hover:scale-105 transition-transform duration-300 font-heading leading-none">
-                3+
-              </div>
-              <div className="text-xs sm:text-[15px] text-[#6B6560] font-mono mt-1">
-                Industries Served
-              </div>
-            </div>
-          </motion.div>
-
-          {/* 2. Three-Column Grid (Vision | 3D Visual | Mission) */}
-          <div className="grid lg:grid-cols-[1fr_1.15fr_1fr] gap-8 lg:gap-9 items-stretch">
-            {/* Left Card — Vision */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#F8F6F2] rounded-[28px] border border-[rgba(138,123,92,0.18)] p-8 sm:p-9 shadow-[0_6px_28px_rgba(28,27,25,0.03)] flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono font-semibold tracking-[0.25em] text-[#8A7B5C] uppercase mb-4 block">
-                  VISION
-                </span>
-                <h3 className="font-heading font-bold text-2xl sm:text-[26px] text-[#1C1B19] leading-snug mb-4">
-                  Creating the benchmark for exceptional digital and spatial experiences.
-                </h3>
-                <p className="text-sm sm:text-[15px] text-[#6B6560] leading-relaxed">
-                  To be India's premier digital growth and spatial engineering agency, setting the standard for multi-disciplinary excellence where physical architecture seamlessly converges with high-performance code.
-                </p>
-              </div>
-
-              {/* Bottom Thin Bronze Line */}
-              <div className="h-[1px] bg-[#8A7B5C]/25 w-full mt-8" />
-            </motion.div>
-
-            {/* Center — Hero 3D Spatial Visual (Focal Point) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.94, rotate: -1 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.7, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-[32px] bg-gradient-to-b from-[#F7F4EF] to-[#ECE6DB] p-6 sm:p-7 shadow-[0_12px_40px_rgba(28,27,25,0.08)] border border-[#8A7B5C]/25 relative overflow-hidden flex flex-col justify-between items-center group"
-            >
-              {/* Subtle Radial Bronze Glow Behind Booth (8% opacity) */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(138,123,92,0.08)_0%,_transparent_70%)] pointer-events-none" />
-
-              {/* Top Meta Tag */}
-              <div className="w-full flex items-center justify-between relative z-10 mb-4">
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#8A7B5C] font-semibold">
-                  Spatial Innovation
-                </span>
-                <span className="text-[11px] font-mono text-[#6B6560]">
-                  3D Architecture
-                </span>
-              </div>
-
-              {/* 3D Exhibition Booth Visual with Hover Rotation */}
-              <div className="w-full rounded-[22px] overflow-hidden border border-[#8A7B5C]/20 shadow-md bg-stone-100 relative group-hover:rotate-[3deg] group-hover:shadow-xl transition-all duration-500">
-                <img
-                  src="/elite-eventures.png"
-                  alt="3D Spatial Exhibition Booth Render"
-                  className="w-full h-[220px] sm:h-[260px] object-cover object-center group-hover:scale-105 transition-transform duration-700"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.src = "/case2.png";
-                  }}
-                />
-              </div>
-
-              {/* Caption */}
-              <div className="w-full pt-4 text-center relative z-10">
-                <span className="text-xs font-mono text-[#6B6560]">
-                  Exhibition Booth 3D Architecture & Spatial Execution
-                </span>
-              </div>
-            </motion.div>
-
-            {/* Right Card — Mission */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}
-              className="bg-[#F8F6F2] rounded-[28px] border border-[rgba(138,123,92,0.18)] p-8 sm:p-9 shadow-[0_6px_28px_rgba(28,27,25,0.03)] flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-xs font-mono font-semibold tracking-[0.25em] text-[#8A7B5C] uppercase mb-4 block">
-                  MISSION
-                </span>
-                <h3 className="font-heading font-bold text-2xl sm:text-[26px] text-[#1C1B19] leading-snug mb-4">
-                  Designing immersive brands through strategy, engineering, and innovation.
-                </h3>
-                <p className="text-sm sm:text-[15px] text-[#6B6560] leading-relaxed">
-                  Empowering ambitious market leaders with high-converting web funnels, photorealistic 3D spatial builds, interactive exhibition gamification, and bespoke fintech engines that generate undeniable ROI.
-                </p>
-              </div>
-
-              {/* Bronze Outlined Pill */}
-              <div className="pt-8">
-                <span className="inline-block text-xs font-mono font-semibold text-[#8A7B5C] border border-[#8A7B5C]/40 px-4 py-1.5 rounded-full">
-                  Driven by Purpose
-                </span>
-              </div>
-            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Brand Logo Marquee Section */}
-      <LogoMarquee />
-
-      {/* Leadership Team */}
-      <section className="pt-16 pb-8 md:pt-20 md:pb-10">
-        <div className="container-narrow">
-          <SectionHeading label="Agency Leadership" title="Meet the minds behind SocioKraft" />
-
-          {/* Founders */}
-          <div className="grid md:grid-cols-2 gap-8 mt-12 mb-8">
-            {founders.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass-card glass-card-hover rounded-3xl p-8 border border-line text-center bg-card flex flex-col items-center justify-between"
-              >
-                <div>
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full object-cover border-2 border-bronze/50 shadow-md mb-4"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.style.display = "none";
-                    }}
-                  />
-                  <h3 className="font-heading font-bold text-xl text-ink">{member.name}</h3>
-                  <span className="text-xs font-mono text-bronze font-semibold mb-3 block">{member.role}</span>
-                  <p className="text-sm text-taupe leading-relaxed">{member.desc}</p>
-                </div>
-              </motion.div>
+        {/* ============================================================== */}
+        {/* SECTION 2: MARQUEE TICKER */}
+        {/* ============================================================== */}
+        <section
+          className="pause-hover overflow-hidden border-y-2 border-navy bg-lemon py-5"
+          aria-label="Our Core Commitments"
+        >
+          <p className="mb-3 text-center text-xs font-bold uppercase tracking-[0.25em] text-navy">
+            The Sociokraft Standard for Healthcare
+          </p>
+          <div className="flex w-max animate-marquee gap-4">
+            {[...marqueeItems, ...marqueeItems].map((item, i) => (
+              <span key={i} className="flex items-center gap-4">
+                <span
+                  className={`whitespace-nowrap rounded-full border-2 border-navy px-5 py-2 text-base font-extrabold md:text-xl ${item.bg}`}
+                >
+                  {item.name}
+                </span>
+                <span className="text-xl font-black text-coral">✚</span>
+              </span>
             ))}
           </div>
+        </section>
 
-          {/* CTOs */}
-          <div className="grid md:grid-cols-2 gap-8">
-            {ctos.map((member, i) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="glass-card glass-card-hover rounded-3xl p-8 border border-line text-center bg-card flex flex-col items-center justify-between"
-              >
-                <div>
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-24 h-24 rounded-full object-cover border-2 border-bronze/50 shadow-md mb-4"
-                    onError={(e) => {
-                      const target = e.currentTarget;
-                      target.style.display = "none";
-                    }}
-                  />
-                  <h3 className="font-heading font-bold text-xl text-ink">{member.name}</h3>
-                  <span className="text-xs font-mono text-bronze font-semibold mb-3 block">{member.role}</span>
-                  <p className="text-sm text-taupe leading-relaxed">{member.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Google Verified Client Reviews Section */}
-      <section className="py-12 md:py-16 bg-stone-100/60 border-y border-line overflow-hidden">
-        <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        {/* ============================================================== */}
+        {/* SECTION 3: THE STORY & OUR ORIGIN */}
+        {/* ============================================================== */}
+        <section id="story" className="relative bg-peach py-20 md:py-28">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-card border border-line text-xs font-semibold text-ink mb-3 shadow-xs">
-                <GoogleIcon />
-                <span>4.9 / 5.0 Rating on Google Reviews</span>
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
+                <span className="h-2 w-2 rounded-full bg-coral" />
+                Our Origin Story
+              </span>
+            </div>
+
+            <div className="mt-5 grid gap-12 lg:grid-cols-12 items-start">
+              {/* Left Column Narrative */}
+              <div className="lg:col-span-7 space-y-6">
+                <h2 className="text-4xl font-extrabold leading-[1.04] tracking-tight md:text-6xl text-navy">
+                  Why Great Doctors Were{" "}
+                  <span className="relative inline-block rounded-2xl border-2 border-navy bg-card px-3 -rotate-1 text-navy">
+                    Invisible
+                  </span>{" "}
+                  in the Digital World.
+                </h2>
+
+                <p className="text-lg text-navy/90 leading-relaxed font-medium">
+                  Doctors dedicate decades of intense study and clinical practice to curing disease,
+                  advancing surgical methods, and saving lives. Yet when patients turn to social
+                  media for medical guidance, the platforms are frequently dominated by sensationalist
+                  influencers with zero medical degrees.
+                </p>
+
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Real doctors hesitate because of three genuine bottlenecks: lack of time between
+                  surgeries and OPDs, anxiety over regulatory/ethical compliance, and the sheer
+                  complexity of scripting, filming, and post-producing cinema-grade content.
+                </p>
+
+                <p className="text-base text-muted-foreground leading-relaxed">
+                  Sociokraft was founded to eliminate those bottlenecks entirely. We handle every
+                  single creative and technological step — from researching and scripting
+                  patient-friendly explanations, to directing relaxed on-site clinic shoots, to
+                  engineering sleek doctor websites.
+                </p>
+
+                {/* Founder Quote Card */}
+                <div className="rounded-[2rem] border-2 border-navy bg-card p-6 md:p-8 hard-shadow text-navy relative mt-8">
+                  <Quote className="h-10 w-10 text-coral fill-coral/20 mb-3" />
+                  <p className="text-base sm:text-lg font-bold italic leading-relaxed text-navy">
+                    “Healthcare marketing should never feel like a noisy commercial. It should feel
+                    like a compassionate, clear conversation that reassures the patient and commands
+                    unquestioned clinical respect.”
+                  </p>
+                  <div className="mt-4 pt-4 border-t border-navy/20 flex items-center gap-3">
+                    <div className="h-10 w-10 rounded-full border-2 border-navy bg-coral overflow-hidden">
+                      <img
+                        src="/team/founder.png?v=2"
+                        alt="Divya Jain"
+                        className="h-full w-full object-cover"
+                        onError={(e) => {
+                          e.currentTarget.src = "/team/divya.png";
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <p className="font-extrabold text-sm text-navy">Divya Jain</p>
+                      <p className="text-xs text-muted-foreground">Founder & Creative Head, Sociokraft</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-ink">
-                What our partners say
+
+              {/* Right Column 3 Key Highlights */}
+              <div className="lg:col-span-5 space-y-6">
+                {/* Pillar 01 */}
+                <div className="rounded-[2rem] border-2 border-navy bg-coral p-6 sm:p-7 hard-shadow text-navy">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="rounded-full bg-navy px-3 py-1 text-xs font-black text-cream">
+                      PILLAR 01
+                    </span>
+                    <Stethoscope className="h-6 w-6 text-navy" />
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-navy">Clinical Nuance & Ethics</h3>
+                  <p className="mt-2 text-sm text-navy/90 leading-relaxed font-medium">
+                    We never compromise medical integrity for cheap algorithm spikes. Every claim is
+                    backed by medical consensus and approved by the doctor.
+                  </p>
+                </div>
+
+                {/* Pillar 02 */}
+                <div className="rounded-[2rem] border-2 border-navy bg-sunny p-6 sm:p-7 hard-shadow text-navy">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="rounded-full bg-navy px-3 py-1 text-xs font-black text-cream">
+                      PILLAR 02
+                    </span>
+                    <Film className="h-6 w-6 text-navy" />
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-navy">Full-Service Studio</h3>
+                  <p className="mt-2 text-sm text-navy/90 leading-relaxed font-medium">
+                    We bring studio cameras, lighting, lapel mics, and teleprompters right to your
+                    clinic. Two hours of filming equals a full month of strategic content.
+                  </p>
+                </div>
+
+                {/* Pillar 03 */}
+                <div className="rounded-[2rem] border-2 border-navy bg-turq p-6 sm:p-7 hard-shadow text-navy">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="rounded-full bg-navy px-3 py-1 text-xs font-black text-cream">
+                      PILLAR 03
+                    </span>
+                    <Globe className="h-6 w-6 text-navy" />
+                  </div>
+                  <h3 className="text-2xl font-extrabold text-navy">Integrated Digital Identity</h3>
+                  <p className="mt-2 text-sm text-navy/90 leading-relaxed font-medium">
+                    Content, social media, and portfolio websites work seamlessly together, turning
+                    views into booked consultations and clinic appointments.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* SECTION 4: VISION, MISSION & IMPACT STATS */}
+        {/* ============================================================== */}
+        <section className="bg-card py-20 md:py-28 relative overflow-hidden">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
+            {/* 1. Large Statistics Banner Pill */}
+            <div className="rounded-full border-2 border-navy bg-sand/60 p-4 sm:p-6 hard-shadow max-w-5xl mx-auto mb-16 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-0">
+              {/* Stat 1 */}
+              <div className="flex-1 text-center">
+                <div className="text-4xl sm:text-5xl font-black text-navy font-heading leading-none">
+                  50+
+                </div>
+                <div className="text-xs sm:text-sm text-muted-foreground font-bold mt-1.5 uppercase tracking-wider">
+                  Doctor Brands Elevated
+                </div>
+              </div>
+
+              {/* Divider 1 */}
+              <div className="hidden md:block h-12 w-[2px] bg-navy/20" />
+
+              {/* Stat 2 */}
+              <div className="flex-1 text-center">
+                <div className="text-4xl sm:text-5xl font-black text-coral font-heading leading-none">
+                  10M+
+                </div>
+                <div className="text-xs sm:text-sm text-muted-foreground font-bold mt-1.5 uppercase tracking-wider">
+                  Organic Patient Views
+                </div>
+              </div>
+
+              {/* Divider 2 */}
+              <div className="hidden md:block h-12 w-[2px] bg-navy/20" />
+
+              {/* Stat 3 */}
+              <div className="flex-1 text-center">
+                <div className="text-4xl sm:text-5xl font-black text-emerald font-heading leading-none">
+                  100%
+                </div>
+                <div className="text-xs sm:text-sm text-muted-foreground font-bold mt-1.5 uppercase tracking-wider">
+                  Doctor-Approved Scripts
+                </div>
+              </div>
+
+              {/* Divider 3 */}
+              <div className="hidden md:block h-12 w-[2px] bg-navy/20" />
+
+              {/* Stat 4 */}
+              <div className="flex-1 text-center">
+                <div className="text-4xl sm:text-5xl font-black text-ocean font-heading leading-none">
+                  12+
+                </div>
+                <div className="text-xs sm:text-sm text-muted-foreground font-bold mt-1.5 uppercase tracking-wider">
+                  Specialties Mastered
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Vision and Mission Grid */}
+            <div className="text-center mb-12">
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy bg-mint">
+                <span className="h-2 w-2 rounded-full bg-coral" />
+                Vision & Mission
+              </span>
+              <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-extrabold md:text-5xl text-navy">
+                Setting the Benchmark for{" "}
+                <span className="relative inline-block rounded-2xl bg-sunny px-3 -rotate-1 border-2 border-navy text-navy">
+                  Ethical Healthcare
+                </span>{" "}
+                Growth.
               </h2>
-              <p className="text-taupe text-sm md:text-base mt-2">
-                Real feedback from healthcare directors, exhibition leaders, brand managers, and financial executives.
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+              {/* Vision Card */}
+              <div className="rounded-[2.5rem] border-2 border-navy bg-skylight p-8 sm:p-10 hard-shadow flex flex-col justify-between text-navy">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="rounded-full border-2 border-navy bg-navy px-3.5 py-1 text-xs font-black uppercase tracking-wider text-cream">
+                      OUR VISION
+                    </span>
+                    <Eye className="h-6 w-6 text-ocean" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-navy leading-tight mb-4">
+                    A world where verified medical science leads digital health conversations.
+                  </h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    We envision a future where patients no longer fall prey to unscientific fads or
+                    quack remedies. By equipping authentic doctors with viral-level production,
+                    compelling storytelling, and modern websites, we ensure credible medical
+                    knowledge reaches millions across India and the globe.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-4 border-t-2 border-dashed border-navy/20 flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-ocean">
+                    Driven by Patient Impact
+                  </span>
+                  <span className="h-3 w-3 rounded-full bg-ocean" />
+                </div>
+              </div>
+
+              {/* Mission Card */}
+              <div className="rounded-[2.5rem] border-2 border-navy bg-mint p-8 sm:p-10 hard-shadow flex flex-col justify-between text-navy">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="rounded-full border-2 border-navy bg-emerald px-3.5 py-1 text-xs font-black uppercase tracking-wider text-cream">
+                      OUR MISSION
+                    </span>
+                    <Target className="h-6 w-6 text-emerald" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black text-navy leading-tight mb-4">
+                    Empowering doctors to build authority without sacrificing clinical hours.
+                  </h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    Our mission is to provide doctors with a friction-free, turnkey growth engine:
+                    specialty-deep topic research, doctor-approved scripts, comfortable teleprompter
+                    shoots, cinematic editing, algorithm-smart publishing, and high-converting
+                    portfolio websites.
+                  </p>
+                </div>
+
+                <div className="mt-8 pt-4 border-t-2 border-dashed border-navy/20 flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase tracking-wider text-emerald">
+                    End-to-End Partnership
+                  </span>
+                  <span className="h-3 w-3 rounded-full bg-emerald" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* SECTION 5: CORE VALUES / GUIDING PRINCIPLES */}
+        {/* ============================================================== */}
+        <section className="bg-cream py-20 md:py-28 border-t-2 border-navy">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
+            <div className="text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy bg-lavender">
+                <span className="h-2 w-2 rounded-full bg-coral" />
+                Our Principles
+              </span>
+              <h2 className="mt-4 text-3xl font-extrabold md:text-6xl text-navy">
+                The Standards We{" "}
+                <span className="relative inline-block rounded-2xl bg-pink px-3 -rotate-1 border-2 border-navy text-navy">
+                  Never Break.
+                </span>
+              </h2>
+              <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
+                Healthcare is different from any other industry. Here is how we safeguard your
+                reputation and medical license.
               </p>
             </div>
 
-            {/* Carousel Navigation Buttons */}
-            <div className="flex items-center gap-3">
-              <button
-                onClick={prevReview}
-                aria-label="Previous review"
-                className="w-11 h-11 rounded-full bg-card hover:bg-white border border-line shadow-xs flex items-center justify-center text-ink hover:text-bronze transition-all cursor-pointer"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <button
-                onClick={nextReview}
-                aria-label="Next review"
-                className="w-11 h-11 rounded-full bg-card hover:bg-white border border-line shadow-xs flex items-center justify-center text-ink hover:text-bronze transition-all cursor-pointer"
-              >
-                <ChevronRight size={20} />
-              </button>
+            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Value 1 */}
+              <div className="rounded-[2rem] border-2 border-navy bg-peach p-6 hard-shadow flex flex-col justify-between text-navy transition hover:-translate-y-1">
+                <div>
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-navy bg-coral text-navy mb-5 shadow-sm">
+                    <ShieldCheck className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-black text-navy mb-2">Ethics Over Clicks</h3>
+                  <p className="text-sm text-navy/85 leading-relaxed">
+                    We strictly follow medical advertising guidelines. No sensational fear-mongering,
+                    no unrealistic cure guarantees — only verified science communicated with warmth.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-navy/20 text-xs font-bold text-coral uppercase tracking-wider">
+                  01 · Integrity First
+                </div>
+              </div>
+
+              {/* Value 2 */}
+              <div className="rounded-[2rem] border-2 border-navy bg-sunny p-6 hard-shadow flex flex-col justify-between text-navy transition hover:-translate-y-1">
+                <div>
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-navy bg-card text-navy mb-5 shadow-sm">
+                    <Brain className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-black text-navy mb-2">Specialty-Deep Focus</h3>
+                  <p className="text-sm text-navy/85 leading-relaxed">
+                    A neurologist speaks differently from a fertility specialist or cosmetic dentist.
+                    We tailor visual systems, tone, and clinical vocabulary specifically to your domain.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-navy/20 text-xs font-bold text-navy uppercase tracking-wider">
+                  02 · Niche Precision
+                </div>
+              </div>
+
+              {/* Value 3 */}
+              <div className="rounded-[2rem] border-2 border-navy bg-turq p-6 hard-shadow flex flex-col justify-between text-navy transition hover:-translate-y-1">
+                <div>
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-navy bg-ocean text-white mb-5 shadow-sm">
+                    <Clock className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-black text-navy mb-2">Respect for Clinical Time</h3>
+                  <p className="text-sm text-navy/85 leading-relaxed">
+                    Your primary duty is your patients. Our seamless recording workflows, teleprompter
+                    scripts, and on-site crew ensure maximum output from just 2 hours a month.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-navy/20 text-xs font-bold text-navy uppercase tracking-wider">
+                  03 · Maximum Efficiency
+                </div>
+              </div>
+
+              {/* Value 4 */}
+              <div className="rounded-[2rem] border-2 border-navy bg-lavender p-6 hard-shadow flex flex-col justify-between text-navy transition hover:-translate-y-1">
+                <div>
+                  <div className="grid h-12 w-12 place-items-center rounded-2xl border-2 border-navy bg-grape text-white mb-5 shadow-sm">
+                    <Palette className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-black text-navy mb-2">Cinema-Grade Craft</h3>
+                  <p className="text-sm text-navy/85 leading-relaxed">
+                    From 4K cameras and bespoke typography to custom animations and conversion-led web
+                    code, every asset we deliver feels undeniably high-end.
+                  </p>
+                </div>
+                <div className="mt-6 pt-3 border-t border-navy/20 text-xs font-bold text-grape uppercase tracking-wider">
+                  04 · Uncompromising Quality
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Reviews Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {clientReviews.map((review, i) => (
-              <motion.div
-                key={review.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-card rounded-3xl p-6 border border-line shadow-xs hover:shadow-md transition-all flex flex-col justify-between relative group"
-              >
-                <div>
-                  {/* Review Card Header */}
-                  <div className="flex items-start justify-between gap-2 mb-4">
-                    <div className="flex items-center gap-2.5">
-                      <div className="relative shrink-0">
+        {/* ============================================================== */}
+        {/* SECTION 6: LEADERSHIP TEAM */}
+        {/* ============================================================== */}
+        <section id="team" className="relative overflow-hidden bg-lavender py-20 md:py-28 text-navy">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
+            <div className="text-center">
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
+                <span className="h-2 w-2 rounded-full bg-coral" />
+                Meet the Leadership
+              </span>
+              <h2 className="mx-auto mt-4 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl text-navy">
+                The Creative & Technical Minds Behind{" "}
+                <span className="relative inline-block rounded-2xl bg-card px-3 -rotate-1 border-2 border-navy text-navy">
+                  Sociokraft.
+                </span>
+              </h2>
+              <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
+                Healthcare brand strategists, tech architects, medical scriptwriters, and video
+                cinematographers dedicated to your growth.
+              </p>
+            </div>
+
+            <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-10 max-w-4xl mx-auto">
+              {/* Member 1: Divya Jain */}
+              <div>
+                <div className="group text-center">
+                  <div
+                    className="mx-auto aspect-square w-full max-w-[210px] overflow-hidden border-2 border-navy transition duration-500 group-hover:-translate-y-2 group-hover:rotate-3 animate-blob bg-coral hard-shadow-sm"
+                    style={{ transform: "translateZ(0)" }}
+                  >
+                    <img
+                      src="/team/founder.png?v=2"
+                      alt="Divya Jain - Founder & Creative Head"
+                      className="h-full w-full object-cover object-center"
+                      onError={(e) => {
+                        e.currentTarget.src = "/team/divya.png";
+                      }}
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <p className="inline-block rounded-full border-2 border-navy bg-card px-4 py-1 text-xs font-bold text-navy shadow-sm">
+                      Divya Jain
+                    </p>
+                    <p className="mt-2 font-black text-navy text-base md:text-lg">
+                      Founder & Creative Head
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground max-w-xs mx-auto">
+                      Spearheading brand strategy, storytelling, and doctor-approved content production.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Member 2: Prakshal Jain */}
+              <div className="md:mt-6">
+                <div className="group text-center">
+                  <div
+                    className="mx-auto aspect-square w-full max-w-[210px] overflow-hidden border-2 border-navy transition duration-500 group-hover:-translate-y-2 group-hover:rotate-3 animate-blob bg-sunny hard-shadow-sm"
+                    style={{ transform: "translateZ(0)" }}
+                  >
+                    <img
+                      src="/team/cto.png?v=2"
+                      alt="Prakshal Jain - CTO"
+                      className="h-full w-full object-cover object-center"
+                      onError={(e) => {
+                        e.currentTarget.src = "/team/prakshal.png";
+                      }}
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <p className="inline-block rounded-full border-2 border-navy bg-card px-4 py-1 text-xs font-bold text-navy shadow-sm">
+                      Prakshal Jain
+                    </p>
+                    <p className="mt-2 font-black text-navy text-base md:text-lg">
+                      CTO & Co-Founder
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground max-w-xs mx-auto">
+                      Architecting high-converting doctor web platforms, SEO systems, and patient lead engines.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Member 3: Nisha Singh */}
+              <div>
+                <div className="group text-center">
+                  <div
+                    className="mx-auto aspect-square w-full max-w-[210px] overflow-hidden border-2 border-navy transition duration-500 group-hover:-translate-y-2 group-hover:rotate-3 animate-blob bg-pink hard-shadow-sm"
+                    style={{ transform: "translateZ(0)" }}
+                  >
+                    <img
+                      src="/team/lead-dev.png?v=2"
+                      alt="Nisha Singh - Lead Developer"
+                      className="h-full w-full object-cover object-center"
+                      onError={(e) => {
+                        e.currentTarget.src = "/team/nisha.png";
+                      }}
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <p className="inline-block rounded-full border-2 border-navy bg-card px-4 py-1 text-xs font-bold text-navy shadow-sm">
+                      Nisha Singh
+                    </p>
+                    <p className="mt-2 font-black text-navy text-base md:text-lg">
+                      Lead Developer & UI/UX
+                    </p>
+                    <p className="mt-1 text-xs text-muted-foreground max-w-xs mx-auto">
+                      Crafting lightning-fast digital experiences, interactive web interfaces, and conversion funnels.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <p className="mt-10 text-center text-sm font-semibold text-muted-foreground">
+              Backed by our dedicated team of medical researchers, video editors, and growth strategists.
+            </p>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* SECTION 7: GOOGLE VERIFIED CLIENT REVIEWS */}
+        {/* ============================================================== */}
+        <section id="reviews" className="py-20 md:py-28 bg-card border-y-2 border-navy overflow-hidden">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border-2 border-navy bg-sand text-xs font-bold text-navy mb-3 shadow-xs">
+                  <GoogleIcon />
+                  <span>4.9 / 5.0 Rating on Google Reviews</span>
+                </div>
+                <h2 className="font-heading font-black text-3xl sm:text-4xl md:text-5xl text-navy">
+                  What Healthcare Leaders Say
+                </h2>
+                <p className="text-muted-foreground text-sm md:text-base mt-2 max-w-xl">
+                  Real feedback from specialized surgeons, dermatologists, practice owners, and
+                  multispecialty clinic directors.
+                </p>
+              </div>
+
+              {/* Carousel Navigation Buttons */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={prevReview}
+                  aria-label="Previous review"
+                  className="w-11 h-11 rounded-full border-2 border-navy bg-card hover:bg-sand flex items-center justify-center text-navy shadow-xs transition-all active:scale-95 cursor-pointer"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={nextReview}
+                  aria-label="Next review"
+                  className="w-11 h-11 rounded-full border-2 border-navy bg-card hover:bg-sand flex items-center justify-center text-navy shadow-xs transition-all active:scale-95 cursor-pointer"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            </div>
+
+            {/* Reviews Grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {clientReviews.map((review, i) => (
+                <div
+                  key={review.id}
+                  className={`rounded-3xl border-2 border-navy p-6 hard-shadow flex flex-col justify-between transition hover:-translate-y-1 ${
+                    i === reviewIndex ? "bg-peach" : "bg-card"
+                  }`}
+                >
+                  <div>
+                    {/* Header */}
+                    <div className="flex items-start justify-between gap-2 mb-4">
+                      <div className="flex items-center gap-2.5">
                         <div
-                          className={`w-10 h-10 rounded-full ${review.avatarBg} text-white font-bold text-xs flex items-center justify-center shadow-xs`}
+                          className={`w-10 h-10 rounded-full border-2 border-navy ${review.avatarBg} text-white font-black text-xs flex items-center justify-center`}
                         >
                           {review.initials}
                         </div>
-                        {/* Little Google star indicator */}
-                        <div className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-amber-500 text-white flex items-center justify-center text-[8px] border border-white font-bold">
-                          ★
+                        <div>
+                          <h4 className="font-extrabold text-sm text-navy leading-snug">
+                            {review.name}
+                          </h4>
+                          <span className="text-[10px] text-muted-foreground block font-bold">
+                            {review.category}
+                          </span>
                         </div>
                       </div>
+                      <GoogleIcon />
+                    </div>
 
-                      <div>
-                        <h4 className="font-heading font-bold text-xs sm:text-sm text-ink leading-snug">
-                          {review.name}
-                        </h4>
-                        <span className="text-[10px] text-taupe block font-mono">
-                          {review.category}
-                        </span>
+                    {/* Stars & Verified */}
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <div className="flex items-center gap-0.5">
+                        {[...Array(review.stars)].map((_, s) => (
+                          <Star key={s} size={14} className="fill-sunny text-navy" />
+                        ))}
                       </div>
+                      <CheckCircle2 size={13} className="text-emerald fill-emerald/20" />
+                      <span className="text-[10px] font-bold text-muted-foreground">Verified</span>
                     </div>
 
-                    <GoogleIcon />
+                    {/* Review text */}
+                    <p className="text-xs sm:text-[13px] text-navy/85 leading-relaxed font-medium">
+                      "{review.text}"
+                    </p>
                   </div>
 
-                  {/* Rating Stars & Blue Verified Checkmark */}
-                  <div className="flex items-center gap-1.5 mb-3">
-                    <div className="flex items-center gap-0.5">
-                      {[...Array(review.stars)].map((_, s) => (
-                        <Star key={s} size={14} className="fill-amber-400 text-amber-400" />
-                      ))}
-                    </div>
-                    <CheckCircle2 size={13} className="text-blue-500 fill-blue-50" />
-                    <span className="text-[9.5px] font-mono text-taupe font-semibold">Verified</span>
+                  <div className="mt-6 pt-3 border-t border-navy/20 flex items-center justify-between text-[10px] font-bold text-muted-foreground uppercase">
+                    <span>Google Review</span>
+                    <span className="text-emerald font-black">5.0 ★</span>
                   </div>
-
-                  {/* Review Content */}
-                  <p className="text-taupe text-xs leading-relaxed">
-                    "{review.text}"
-                  </p>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* SECTION 8: HOW WE WORK (COLLABORATION MODEL) */}
+        {/* ============================================================== */}
+        <section className="relative overflow-hidden bg-mint py-20 md:py-28 text-navy">
+          <svg
+            viewBox="0 0 24 24"
+            className="absolute right-10 top-10 h-16 w-16 text-emerald animate-spin-slow pointer-events-none"
+            aria-hidden="true"
+          >
+            <path
+              fill="currentColor"
+              d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"
+            />
+          </svg>
+
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-[108px]">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border-2 border-navy bg-card px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-navy">
+                <span className="h-2 w-2 rounded-full bg-coral" />
+                The Sociokraft Workflow
+              </span>
+              <h2 className="mt-5 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl text-navy">
+                How We Collaborate with{" "}
+                <span className="relative inline-block rounded-2xl bg-card px-3 -rotate-1 border-2 border-navy text-navy">
+                  Busy Doctors.
+                </span>
+              </h2>
+              <p className="mt-3 text-muted-foreground max-w-xl">
+                A streamlined, zero-friction process built to deliver massive digital authority in
+                minimal doctor time.
+              </p>
+            </div>
+
+            <div className="relative mt-14">
+              <div className="absolute left-0 right-0 top-10 hidden h-1 border-t-4 border-dashed border-navy/40 lg:block" />
+
+              <div className="-mx-5 flex snap-x gap-4 overflow-x-auto px-5 pb-4 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0">
+                {[
+                  {
+                    num: "01",
+                    title: "Specialty Audit",
+                    desc: "We analyze your specialty, competitor landscape, target patients, and key procedures to identify high-interest content opportunities.",
+                    bg: "bg-coral",
+                    offset: "",
+                  },
+                  {
+                    num: "02",
+                    title: "Clinical Scripting",
+                    desc: "Our medical writing team prepares conversational, accurate scripts and carousels addressing the exact questions patients ask in your clinic.",
+                    bg: "bg-sunny",
+                    offset: "lg:mt-8",
+                  },
+                  {
+                    num: "03",
+                    title: "Clinic Film Session",
+                    desc: "We bring 4K cameras, soft lighting, and teleprompters right to your clinic. Just 2 hours of relaxed filming produces an entire month of reels.",
+                    bg: "bg-turq",
+                    offset: "",
+                  },
+                  {
+                    num: "04",
+                    title: "Publishing & SEO",
+                    desc: "Post-production with dynamic captions, color grading, sound design, website sync, and comprehensive monthly growth analytics.",
+                    bg: "bg-pink",
+                    offset: "lg:mt-8",
+                  },
+                ].map((step, idx) => (
+                  <div key={idx} className="w-[75vw] shrink-0 snap-center sm:w-[45vw] lg:w-auto">
+                    <div
+                      className={`relative grid h-20 w-20 place-items-center rounded-full border-2 border-navy text-2xl font-black hard-shadow-sm text-navy ${step.bg}`}
+                    >
+                      {step.num}
+                    </div>
+                    <div
+                      className={`mt-5 rounded-3xl border-2 border-navy bg-card p-6 transition hover:-translate-y-1 text-navy ${step.offset}`}
+                    >
+                      <h3 className="text-xl font-extrabold text-navy">{step.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                        {step.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================== */}
+        {/* SECTION 9: FINAL CONTACT & CTA BANNER */}
+        {/* ============================================================== */}
+        <section id="contact" className="relative overflow-hidden bg-sunny py-24 md:py-32 text-navy">
+          <div className="absolute inset-0 dots pointer-events-none" aria-hidden="true" />
+
+          {/* Floating doctor preview cards */}
+          <img
+            src={doc1Img}
+            alt=""
+            className="absolute -left-10 top-16 hidden w-48 rotate-[-10deg] rounded-3xl border-2 border-navy hard-shadow animate-float lg:block pointer-events-none"
+          />
+          <img
+            src={doc2Img}
+            alt=""
+            className="absolute -right-6 bottom-16 hidden w-44 rotate-[8deg] rounded-3xl border-2 border-navy hard-shadow animate-float-slow lg:block pointer-events-none"
+          />
+
+          <div className="relative mx-auto max-w-4xl px-5 text-center">
+            <h2 className="text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl text-navy">
+              Ready to Build Your{" "}
+              <span className="relative inline-block rounded-2xl bg-coral px-3 -rotate-1 border-2 border-navy text-navy">
+                Digital Presence?
+              </span>
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-lg text-navy/90 font-medium">
+              Join leading doctors and specialists across India who trust Sociokraft to handle their
+              personal branding, social growth, and professional practice websites.
+            </p>
+
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <button
+                type="button"
+                onClick={() => setAuditModalOpen(true)}
+                className="btn-pill-navy px-6 py-3.5 text-base"
+              >
+                Claim Your Free Digital Audit
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  window.open("https://wa.me/919999999999?text=Hi%20Sociokraft", "_blank")
+                }
+                className="btn-pill-card px-6 py-3.5 text-base flex items-center gap-2"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Contact Sociokraft on WhatsApp
+              </button>
+            </div>
+
+            <p className="mt-4 text-sm text-navy/80 font-bold">
+              No pressure. No spam. Just a friendly conversation about your practice goals.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <Footer onOpenAudit={() => setAuditModalOpen(true)} />
+
+      {/* ============================================================== */}
+      {/* MODAL: FREE DIGITAL AUDIT MODAL */}
+      {/* ============================================================== */}
+      {auditModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy/60 backdrop-blur-sm">
+          <div className="relative w-full max-w-lg rounded-3xl border-2 border-navy bg-card p-6 md:p-8 hard-shadow text-navy">
+            <button
+              onClick={() => setAuditModalOpen(false)}
+              className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full border-2 border-navy bg-sand text-navy transition hover:scale-110"
+              aria-label="Close"
+            >
+              <X className="h-5 w-5" />
+            </button>
+
+            {auditSubmitted ? (
+              <div className="text-center py-8">
+                <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-emerald border-2 border-navy text-cream mb-4">
+                  <Check className="h-8 w-8" />
+                </div>
+                <h3 className="text-2xl font-black text-navy">Audit Request Received!</h3>
+                <p className="mt-2 text-muted-foreground text-sm">
+                  Our healthcare growth strategist will inspect your digital channels and contact
+                  you within 24 hours with an actionable summary.
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-ocean mb-1">
+                  <span className="h-2 w-2 rounded-full bg-coral" />
+                  Free 1-on-1 Consultation
+                </div>
+                <h3 className="text-2xl font-black text-navy">Claim Your Free Digital Audit</h3>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Get an expert review of your Instagram profile, video opportunities, Google
+                  presence, and website potential.
+                </p>
+
+                <form onSubmit={handleAuditSubmit} className="mt-6 space-y-3.5">
+                  <div>
+                    <label className="block text-xs font-bold text-navy mb-1">
+                      Doctor / Clinic Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Dr. Priya Sharma"
+                      value={auditForm.name}
+                      onChange={(e) => setAuditForm({ ...auditForm, name: e.target.value })}
+                      className="w-full rounded-xl border-2 border-navy bg-sand/40 px-3.5 py-2.5 text-sm text-navy outline-none focus:border-ocean"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-bold text-navy mb-1">Specialty</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Dermatology"
+                        value={auditForm.specialty}
+                        onChange={(e) => setAuditForm({ ...auditForm, specialty: e.target.value })}
+                        className="w-full rounded-xl border-2 border-navy bg-sand/40 px-3.5 py-2.5 text-sm text-navy outline-none focus:border-ocean"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-navy mb-1">City</label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="e.g. Mumbai, Delhi"
+                        value={auditForm.city}
+                        onChange={(e) => setAuditForm({ ...auditForm, city: e.target.value })}
+                        className="w-full rounded-xl border-2 border-navy bg-sand/40 px-3.5 py-2.5 text-sm text-navy outline-none focus:border-ocean"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-navy mb-1">
+                      WhatsApp / Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      placeholder="+91 98765 43210"
+                      value={auditForm.phone}
+                      onChange={(e) => setAuditForm({ ...auditForm, phone: e.target.value })}
+                      className="w-full rounded-xl border-2 border-navy bg-sand/40 px-3.5 py-2.5 text-sm text-navy outline-none focus:border-ocean"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-navy mb-1">
+                      Current Instagram Handle or Website (optional)
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="@dr.priya.skin or www.clinic.com"
+                      value={auditForm.websiteOrHandle}
+                      onChange={(e) =>
+                        setAuditForm({ ...auditForm, websiteOrHandle: e.target.value })
+                      }
+                      className="w-full rounded-xl border-2 border-navy bg-sand/40 px-3.5 py-2.5 text-sm text-navy outline-none focus:border-ocean"
+                    />
+                  </div>
+
+                  <button type="submit" className="btn-pill-coral w-full py-3 text-base mt-2">
+                    Send Audit Request
+                  </button>
+                </form>
+              </>
+            )}
           </div>
         </div>
-      </section>
-
-      <Footer />
+      )}
     </div>
   );
-};
-
-export default About;
+}

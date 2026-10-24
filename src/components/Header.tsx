@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   ChevronDown,
   Clapperboard,
@@ -17,6 +18,8 @@ export default function Header({ onOpenAudit }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,9 +32,13 @@ export default function Header({ onOpenAudit }: HeaderProps) {
   const handleNavClick = (href: string) => {
     setServicesOpen(false);
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
+    if (location.pathname === "/") {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      navigate(`/${href}`);
     }
   };
 
@@ -56,11 +63,13 @@ export default function Header({ onOpenAudit }: HeaderProps) {
           }`}
         >
           {/* Brand Logo */}
-          <a
-            href="#top"
+          <Link
+            to="/"
             onClick={(e) => {
-              e.preventDefault();
-              handleNavClick("#top");
+              if (location.pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
             }}
             className="flex items-center gap-2 text-xl font-extrabold tracking-tight text-navy"
           >
@@ -70,7 +79,7 @@ export default function Header({ onOpenAudit }: HeaderProps) {
             <span>
               Socio <span className="text-ocean">kraft</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
@@ -174,6 +183,31 @@ export default function Header({ onOpenAudit }: HeaderProps) {
               </div>
             </div>
 
+            {/* Home Link */}
+            <Link
+              to="/"
+              onClick={(e) => {
+                if (location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
+              className={`group relative py-1 text-sm font-bold transition ${
+                location.pathname === "/"
+                  ? "text-ocean"
+                  : "text-navy hover:text-ocean"
+              }`}
+            >
+              Home
+              <span
+                className={`absolute -bottom-0.5 left-0 h-0.5 w-full rounded bg-coral transition-transform duration-300 ${
+                  location.pathname === "/"
+                    ? "scale-x-100"
+                    : "scale-x-0 origin-left group-hover:scale-x-100"
+                }`}
+              />
+            </Link>
+
             <a
               href="#work"
               onClick={(e) => {
@@ -186,40 +220,23 @@ export default function Header({ onOpenAudit }: HeaderProps) {
               <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded bg-coral transition-transform duration-300 group-hover:scale-x-100" />
             </a>
 
-            <a
-              href="#process"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("#process");
-              }}
-              className="group relative py-1 text-sm font-bold text-navy hover:text-ocean transition"
-            >
-              Process
-              <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded bg-coral transition-transform duration-300 group-hover:scale-x-100" />
-            </a>
-            <a
-              href="#pricing"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("#pricing");
-              }}
-              className="group relative py-1 text-sm font-bold text-navy hover:text-ocean transition"
-            >
-              Pricing
-              <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded bg-coral transition-transform duration-300 group-hover:scale-x-100" />
-            </a>
-
-            <a
-              href="#team"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNavClick("#team");
-              }}
-              className="group relative py-1 text-sm font-bold text-navy hover:text-ocean transition"
+            <Link
+              to="/about"
+              className={`group relative py-1 text-sm font-bold transition ${
+                location.pathname === "/about"
+                  ? "text-ocean"
+                  : "text-navy hover:text-ocean"
+              }`}
             >
               About
-              <span className="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded bg-coral transition-transform duration-300 group-hover:scale-x-100" />
-            </a>
+              <span
+                className={`absolute -bottom-0.5 left-0 h-0.5 w-full rounded bg-coral transition-transform duration-300 ${
+                  location.pathname === "/about"
+                    ? "scale-x-100"
+                    : "scale-x-0 origin-left group-hover:scale-x-100"
+                }`}
+              />
+            </Link>
 
             <a
               href="#faq"
@@ -265,12 +282,21 @@ export default function Header({ onOpenAudit }: HeaderProps) {
         }`}
       >
         <div className="flex items-center justify-between">
-          <span className="flex items-center gap-2 text-xl font-extrabold text-navy">
+          <Link
+            to="/"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              if (location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className="flex items-center gap-2 text-xl font-extrabold text-navy"
+          >
             <span className="grid h-8 w-8 place-items-center rounded-lg border-2 border-navy bg-coral text-sm font-black text-navy rotate-[-8deg]">
               S
             </span>
             Sociokraft
-          </span>
+          </Link>
           <button
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close menu"
@@ -291,6 +317,20 @@ export default function Header({ onOpenAudit }: HeaderProps) {
           >
             Services
           </a>
+          <Link
+            to="/"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              if (location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+            className={`text-3xl font-extrabold transition hover:translate-x-2 ${
+              location.pathname === "/" ? "text-ocean" : "text-navy"
+            }`}
+          >
+            Home
+          </Link>
           <a
             href="#work"
             onClick={(e) => {
@@ -301,36 +341,15 @@ export default function Header({ onOpenAudit }: HeaderProps) {
           >
             Our Work
           </a>
-          <a
-            href="#process"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick("#process");
-            }}
-            className="text-3xl font-extrabold text-navy transition hover:translate-x-2"
-          >
-            Process
-          </a>
-          <a
-            href="#pricing"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick("#pricing");
-            }}
-            className="text-3xl font-extrabold text-navy transition hover:translate-x-2"
-          >
-            Pricing
-          </a>
-          <a
-            href="#team"
-            onClick={(e) => {
-              e.preventDefault();
-              handleNavClick("#team");
-            }}
-            className="text-3xl font-extrabold text-navy transition hover:translate-x-2"
+          <Link
+            to="/about"
+            onClick={() => setMobileMenuOpen(false)}
+            className={`text-3xl font-extrabold transition hover:translate-x-2 ${
+              location.pathname === "/about" ? "text-ocean" : "text-navy"
+            }`}
           >
             About
-          </a>
+          </Link>
           <a
             href="#faq"
             onClick={(e) => {
